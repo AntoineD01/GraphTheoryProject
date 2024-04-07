@@ -1,6 +1,3 @@
-import networkx as nx 
-import matplotlib as plt
-
 def read_constraint_table(file_path):
     tasks = []
     durations = []
@@ -64,9 +61,7 @@ def successors(tasks, predecessors):
             
     return successor_lists
 
-
-    
-    
-
-
+def count_edges(successors):
+    total_edges = sum(len(successors[node]) for node in successors)
+    return total_edges
 

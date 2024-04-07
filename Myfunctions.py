@@ -51,20 +51,20 @@ def display_table(tasks, durations, predecessors):
 
 
 def successors(tasks, predecessors):
-    successor_lists = {}
-
+    successor_lists = {task: [] for task in tasks}
+    
     # Iterate over tasks and predecessors simultaneously
     for task, predecessor in zip(tasks, predecessors):
-        # If predecessors is None or empty, set successors to an empty list
-        if predecessor is None or predecessor.strip() == '':
-            successors = []
-        else:
-            # Split predecessor string by comma and add to successor list
-            successors = [p.strip() for p in predecessor.split(',') if p.strip()]
-        # Add task and its successors to the dictionary
-        successor_lists[task] = successors
-
+        if predecessor is not None:
+            # Add the task to the list of successors for each predecessor
+            for p in predecessor.split(','):
+                pred = p.strip()
+                if pred in successor_lists:
+                    successor_lists[pred].append(task)
+            
     return successor_lists
+
+
     
     
 

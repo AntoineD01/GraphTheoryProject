@@ -29,3 +29,9 @@ def read_constraint_table(file_path):
                     tasks.append(task)
                     durations.append(duration)
     return tasks, durations, predecessors
+
+def display_table(tasks, durations, predecessors):
+    print("Task  | Duration | Predecessor")
+    print("-" * 30)
+    for task, duration, predecessor in zip(tasks, durations, predecessors):
+        print(f"{task:<5} | {duration:<8} | {predecessor:<12}")

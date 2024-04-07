@@ -8,5 +8,7 @@ def main():
     print("Durations:", durations)
     print("Predecessors:", predecessors)
 
+    Myfunctions.display_table(tasks, durations, predecessors)
+
 if __name__ == "__main__":
     main()

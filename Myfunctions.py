@@ -65,3 +65,10 @@ def count_edges(successors):
     total_edges = sum(len(successors[node]) for node in successors)
     return total_edges
 
+def generate_edges(tasks, predecessors):
+    edges = []
+    for task, pred in zip(tasks, predecessors):
+        if pred is not None:
+            for p in pred.split(','):
+                edges.append((p.strip(), task))
+    return edges

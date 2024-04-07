@@ -1,3 +1,6 @@
+import networkx as nx 
+import matplotlib as plt
+
 def read_constraint_table(file_path):
     tasks = []
     durations = []
@@ -45,4 +48,25 @@ def display_table(tasks, durations, predecessors):
         # Convert None to an empty string if predecessor is None
         predecessor_str = "" if predecessor is None else predecessor
         print(f"{task:<5} | {duration:<8} | {predecessor_str:<12}")
+
+
+def successors(tasks, predecessors):
+    successor_lists = {}
+
+    # Iterate over tasks and predecessors simultaneously
+    for task, predecessor in zip(tasks, predecessors):
+        # If predecessors is None or empty, set successors to an empty list
+        if predecessor is None or predecessor.strip() == '':
+            successors = []
+        else:
+            # Split predecessor string by comma and add to successor list
+            successors = [p.strip() for p in predecessor.split(',') if p.strip()]
+        # Add task and its successors to the dictionary
+        successor_lists[task] = successors
+
+    return successor_lists
+    
+    
+
+
 

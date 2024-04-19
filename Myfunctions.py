@@ -55,12 +55,22 @@ def create_table(file_name):
     # Add alpha as a predecessor to edges with alpha as a predecessor
     for edge in alpha_successors:
         table_dict[edge]["predecessors"].append(0)
-
+    
+    # Find edges with no successors
+    edges_with_no_successors = []
+    for edge_name, data in table_dict.items():
+        if not data["successors"]:
+            edges_with_no_successors.append(edge_name)
+    
+    # Create omega with specified properties
+    omega_edge_name = max(table_dict.keys()) + 1
+    table_dict[omega_edge_name] = {"duration": 0, "predecessors": edges_with_no_successors, "successors": []}
 
     # Move alpha to the beginning of the dictionary
     table_dict = {0: table_dict[0], **table_dict}
-    
+
     return table_dict
+
 
 
 

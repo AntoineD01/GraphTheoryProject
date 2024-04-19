@@ -1,11 +1,11 @@
 import Myfunctions
 
 def main():
-    file_name = "table 13.txt"
+    file_name = "table 1.txt"
     
     table_dict = Myfunctions.create_table(file_name)
-    print(table_dict)
-    #Myfunctions.display_table(table_dict)
+    #print(table_dict)
+    Myfunctions.display_table(table_dict)
 
     #Myfunctions.add_successors(table_dict)
     #print(table_dict)

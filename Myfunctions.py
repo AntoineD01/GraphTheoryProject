@@ -1,24 +1,20 @@
 
-def display_table(file_name):
-    with open(file_name, 'r') as file:
-        lines = file.readlines()
-        
-        # Obtenir les noms de colonnes
-        column_names = lines[0].strip().split()
-        num_columns = len(column_names)
-        column_width = max(len(name) for name in column_names)
-        
-        # Afficher les noms de colonnes
-        for name in column_names:
-            print(f"{name.rjust(column_width)}", end="\t")
-        print()  # Nouvelle ligne
-        
-        # Afficher les données du tableau
-        for line in lines[1:]:
-            elements = line.strip().split()
-            for element in elements:
-                print(f"{element.rjust(column_width)}", end="\t")
-            print()  # Nouvelle ligne
+def display_table(table_dict):
+    # Get column names
+    column_names = ["Edge", "Duration", "Predecessors"]
+    column_width = max(len(name) for name in column_names)
+    
+    # Print column names
+    for name in column_names:
+        print(f"{name.rjust(column_width)}", end="\t|\t")
+    print()  # New line
+    
+    # Print table data
+    for edge_name, data in table_dict.items():
+        print(f"{edge_name}".rjust(column_width), end="\t|\t")
+        print(f"{data['duration']}".rjust(column_width), end="\t|\t")
+        print(", ".join(str(pred).rjust(column_width) for pred in data['predecessors']))
+        # New line after each row
 
 def create_table(file_name):
     table_dict = {}

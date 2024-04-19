@@ -16,41 +16,42 @@ def display_table(table_dict):
         print(", ".join(str(pred).rjust(column_width) for pred in data['predecessors']))
         # New line after each row
 
+
 def create_table(file_name):
-    table_dict = {}
+    lines = []
     with open(file_name, 'r') as file:
-        lines = file.readlines()
+        for line in file:
+            lines.append(line.strip())
+    
+    table_dict = {}
+    for line in lines:
+        parts = line.split()  # Split the line into parts
+        edge_name = int(parts[0])  # The first part is the edge name
+        duration = int(parts[1])   # The second part is the duration
+        predecessors = []          # Initialize an empty list for predecessors
+        successors = []            # Initialize an empty list for successors
         
-        # Add fictitious task alpha
-        alpha_successors = []
-        for line in lines:
-            parts = line.strip().split()
-            successors = list(map(int, parts[2:]))
-            if not successors:
-                alpha_successors.append(int(parts[0]))
-        
-        table_dict[0] = {"duration": 0, "predecessors": alpha_successors}
-        
-        # Add tasks from the file
-        for line in lines:
-            parts = line.strip().split()
-            edge_name = int(parts[0])
-            duration = int(parts[1])
-            predecessors = list(map(int, parts[2:]))
-            table_dict[edge_name] = {"duration": duration, "predecessors": predecessors}
-        
-        # Add fictitious task omega
-        omega_predecessors = []
-        for edge_name, data in table_dict.items():
-            if edge_name != 0:  # Exclude alpha as a predecessor of omega
-                successors = [edge for edge in table_dict if edge_name in table_dict[edge]["predecessors"]]
-                if not successors:
-                    omega_predecessors.append(edge_name)
-        
-        max_edge_name = max(table_dict.keys())
-        table_dict[max_edge_name + 1] = {"duration": 0, "predecessors": omega_predecessors}
-        
+        if len(parts) > 2:         # Check if there are predecessors
+            predecessors = list(map(int, parts[2:]))  # Parse the predecessors
+            
+        # Store the data in the dictionary
+        table_dict[edge_name] = {"duration": duration, "predecessors": predecessors, "successors": []}
+    
+    # Populate successors for each edge based on predecessors
+    for edge_name, data in table_dict.items():
+        for predecessor in data["predecessors"]:
+            table_dict[predecessor]["successors"].append(edge_name)
+    
     return table_dict
+
+
+
+
+
+
+
+
+
 
 
 def create_value_matrix(table_dict):
@@ -58,7 +59,6 @@ def create_value_matrix(table_dict):
     value_matrix = [[0] * (max_edge + 1) for _ in range(max_edge + 1)]
     
     for edge_name, data in table_dict.items():
-        
         
         for predecessor in data['predecessors']:
             value_matrix[predecessor][edge_name] = data['duration']
@@ -74,3 +74,10 @@ def display_matrix(matrix):
         for element in row:
             print(str(element).rjust(max_width), end=" ")
         print()
+
+def read_lines_from_file(file_name):
+    lines = []
+    with open(file_name, 'r') as file:
+        for line in file:
+            lines.append(line.strip())
+    return lines

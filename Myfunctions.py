@@ -1,4 +1,3 @@
-
 def display_table(table_dict):
     # Get column names
     column_names = ["Edge", "Duration", "Predecessors"]
@@ -66,49 +65,59 @@ def create_table(file_name):
     omega_edge_name = max(table_dict.keys()) + 1
     table_dict[omega_edge_name] = {"duration": 0, "predecessors": edges_with_no_successors, "successors": []}
 
+    # Add omega as a successor to edges with omega as a successor
+    for edge in edges_with_no_successors:
+        table_dict[edge]["successors"].append(omega_edge_name)
+
     # Move alpha to the beginning of the dictionary
     table_dict = {0: table_dict[0], **table_dict}
 
     return table_dict
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def create_value_matrix(table_dict):
+def create_matrix(table_dict):
+    # Find the maximum edge number
     max_edge = max(table_dict.keys())
-    value_matrix = [[0] * (max_edge + 1) for _ in range(max_edge + 1)]
-    
-    for edge_name, data in table_dict.items():
-        
-        for predecessor in data['predecessors']:
-            value_matrix[predecessor][edge_name] = data['duration']
-    
-    return value_matrix
+
+    # Initialize an empty matrix with zeros
+    edges_matrix = [[0] * (max_edge + 1) for _ in range(max_edge + 1)]
+
+    # Iterate through each edge in the table dictionary
+    for edge, data in table_dict.items():
+        # Check if the edge has successors
+        if data["successors"]:
+            # Iterate through the successors of the current edge
+            for successor in data["successors"]:
+                # Get the duration of the current edge
+                duration = data["duration"]
+                # Set the duration as the value in the matrix
+                edges_matrix[edge][successor] = duration
+
+    return edges_matrix
 
 def display_matrix(matrix):
     # Find the maximum width of elements in the matrix
     max_width = max(len(str(element)) for row in matrix for element in row)
-    
+
     # Display the matrix
     for row in matrix:
         for element in row:
             print(str(element).rjust(max_width), end=" ")
         print()
 
-def read_lines_from_file(file_name):
-    lines = []
-    with open(file_name, 'r') as file:
-        for line in file:
-            lines.append(line.strip())
-    return lines
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

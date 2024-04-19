@@ -1,3 +1,6 @@
+import os
+
+
 def display_table(table_dict):
     # Get column names
     column_names = ["Edge", "Duration", "Predecessors"]
@@ -104,8 +107,22 @@ def display_matrix(matrix):
             print(str(element).rjust(max_width), end=" ")
         print()
 
+def menu():
+    print(f'\n\n\n||| Welcome to Graph Theory 3000 |||\n')
+    nb_table = input(f'Which table do you want to try ?\n')
+    file_name = f"table {nb_table}.txt"
+    #Creation of the dictionnary storing the data
+    table_dict = create_table(file_name)
+    print(f'Here is the table : \n')
+    display_table(table_dict)
+    #Creation of the matrix
+    print(f'\n\nHere is the corresponding matrix : \n')
+    Matrix = create_matrix(table_dict)
+    display_matrix(Matrix)
+    
 
-
+def clear_terminal():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 

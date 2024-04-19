@@ -1,12 +1,26 @@
 
-def display_table_from_file(file_name):
+def display_table(file_name):
     with open(file_name, 'r') as file:
         lines = file.readlines()
-        table = [line.strip().split() for line in lines]
-        for row in table:
-            print("\t".join(row))
+        
+        # Obtenir les noms de colonnes
+        column_names = lines[0].strip().split()
+        num_columns = len(column_names)
+        column_width = max(len(name) for name in column_names)
+        
+        # Afficher les noms de colonnes
+        for name in column_names:
+            print(f"{name.rjust(column_width)}", end="\t")
+        print()  # Nouvelle ligne
+        
+        # Afficher les données du tableau
+        for line in lines[1:]:
+            elements = line.strip().split()
+            for element in elements:
+                print(f"{element.rjust(column_width)}", end="\t")
+            print()  # Nouvelle ligne
 
-def create_table_dict_from_file(file_name):
+def create_table(file_name):
     table_dict = {}
     with open(file_name, 'r') as file:
         lines = file.readlines()

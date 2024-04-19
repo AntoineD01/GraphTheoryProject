@@ -24,6 +24,8 @@ def create_table(file_name):
             lines.append(line.strip())
     
     table_dict = {}
+    alpha_successors = []  # Initialize a list to store alpha's successors
+    
     for line in lines:
         parts = line.split()  # Split the line into parts
         edge_name = int(parts[0])  # The first part is the edge name
@@ -35,14 +37,33 @@ def create_table(file_name):
             predecessors = list(map(int, parts[2:]))  # Parse the predecessors
             
         # Store the data in the dictionary
-        table_dict[edge_name] = {"duration": duration, "predecessors": predecessors, "successors": []}
+        table_dict[edge_name] = {"duration": duration, "predecessors": predecessors, "successors": successors}
+        
+        # Populate alpha_successors list
+        if not predecessors:  # If edge has no predecessors
+            if edge_name != 0:  # Exclude alpha itself
+                alpha_successors.append(edge_name)
+
+    # Create alpha with specified properties
+    table_dict[0] = {"duration": 0, "predecessors": [], "successors": alpha_successors}
     
     # Populate successors for each edge based on predecessors
     for edge_name, data in table_dict.items():
         for predecessor in data["predecessors"]:
             table_dict[predecessor]["successors"].append(edge_name)
     
+    # Add alpha as a predecessor to edges with alpha as a predecessor
+    for edge in alpha_successors:
+        table_dict[edge]["predecessors"].append(0)
+
+
+    # Move alpha to the beginning of the dictionary
+    table_dict = {0: table_dict[0], **table_dict}
+    
     return table_dict
+
+
+
 
 
 

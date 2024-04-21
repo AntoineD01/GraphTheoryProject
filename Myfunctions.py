@@ -1,4 +1,6 @@
 from collections import deque
+import matplotlib.pyplot as plt
+import networkx as nx
 
 def menu():
     print(f'\n\n\n||| Welcome to Graph Theory 3000 |||\n')
@@ -11,6 +13,8 @@ def menu():
     table_dict = create_table(file_name)
     print(f'Here is the table : \n')
     display_table(table_dict)
+
+    display_graph(table_dict)
 
     # Creation of the matrix
     print(f'\n\nHere is the corresponding matrix : \n')
@@ -384,3 +388,32 @@ def find_all_paths(table_dict, nodes, start_node, end_node, visited=None, path=N
                 yield from find_all_paths(table_dict, nodes, neighbor, end_node, visited, path)
 
     visited.remove(start_node)
+
+def display_graph(table_dict):
+    # Create a directed graph
+    G = nx.DiGraph()
+
+    # Add nodes
+    for node in table_dict:
+        G.add_node(node)
+
+    # Add edges
+    for node, data in table_dict.items():
+        for successor in data["successors"]:
+            G.add_edge(node, successor)
+
+    # Set layout
+    pos = nx.spring_layout(G)
+
+    # Draw nodes and edges
+    nx.draw_networkx_nodes(G, pos, node_size=300)
+    nx.draw_networkx_edges(G, pos, arrows=True)
+
+    # Add labels
+    labels = {node: f"{node}" for node in G.nodes()}
+    nx.draw_networkx_labels(G, pos, labels)
+
+    # Show plot
+    plt.title("Graph Representation")
+    plt.axis('off')
+    plt.show()

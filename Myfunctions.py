@@ -54,6 +54,17 @@ def menu():
         print("\nTotal Float:")
         for node, float_value in sorted_total_float:
             print(f"Task {node}: Total Float = {float_value}")
+        
+        critical_paths = find_critical_paths(total_float)
+        if critical_paths:
+            print("\nCritical Paths:")
+            start_node = 0
+            end_node = max(table_dict.keys())
+            paths_generator = find_all_paths(table_dict, critical_paths, start_node, end_node)
+            for i, path in enumerate(paths_generator, start=1):
+                print(f"Path {i}: {' -> '.join(f'Task {node}' for node in path)}")
+        else:
+            print("\nNo critical paths found.")
 
     else:
         print("The graph is not a valid scheduling graph.")
@@ -347,3 +358,29 @@ def compute_total_float(table_dict, earliest_date, latest_date):
         total_float[node] = latest_date[node] - earliest_date[node]
 
     return total_float
+
+def find_critical_paths(total_float):
+    critical_paths = []
+
+    for node, float_value in total_float.items():
+        if float_value == 0:
+            critical_paths.append(node)
+    return critical_paths
+
+def find_all_paths(table_dict, nodes, start_node, end_node, visited=None, path=None):
+    if visited is None:
+        visited = set()
+    if path is None:
+        path = []
+
+    visited.add(start_node)
+    path = path + [start_node]
+
+    if start_node == end_node:
+        yield path
+    else:
+        for neighbor in table_dict[start_node]["successors"]:
+            if neighbor in nodes and neighbor not in visited:
+                yield from find_all_paths(table_dict, nodes, neighbor, end_node, visited, path)
+
+    visited.remove(start_node)

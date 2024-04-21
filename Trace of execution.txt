@@ -1,0 +1,2909 @@
+||| Welcome to Graph Theory 3000 |||
+
+Which table do you want to try ?
+1
+Here is the table : 
+
+    Vertices    |           Duration    |       Predecessors    |
+           0    |                  0    |
+           1    |                  2    |                  0
+           2    |                  5    |                  0
+           3    |                  4    |                  1
+           4    |                  2    |                  2,            3,           13
+           5    |                  5    |                  4
+           6    |                  5    |                  5
+           7    |                  9    |                  6
+           8    |                  2    |                  7
+           9    |                  5    |                  8
+          10    |                  1    |                 11
+          11    |                  1    |                  4
+          12    |                  1    |                  3
+          13    |                  9    |                  6,           12
+          14    |                  0    |                  9,           10
+
+Here is the display of the graph : 
+
+15 vertices
+18 edges
+0 -> 1 = 0
+0 -> 2 = 0
+1 -> 3 = 2
+2 -> 4 = 5
+3 -> 4 = 4
+3 -> 12 = 4
+4 -> 5 = 2
+4 -> 11 = 2
+5 -> 6 = 5
+6 -> 7 = 5
+6 -> 13 = 5
+7 -> 8 = 9
+8 -> 9 = 2
+9 -> 14 = 5
+10 -> 14 = 1
+11 -> 10 = 1
+12 -> 13 = 1
+13 -> 4 = 9
+
+
+Here is the corresponding matrix :
+
+  0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+0 * 0 0 * * * * * * * * * * * *
+1 * * * 2 * * * * * * * * * * *
+2 * * * * 5 * * * * * * * * * *
+3 * * * * 4 * * * * * * * 4 * *
+4 * * * * * 2 * * * * * 2 * * *
+5 * * * * * * 5 * * * * * * * *
+6 * * * * * * * 5 * * * * * 5 *
+7 * * * * * * * * 9 * * * * * *
+8 * * * * * * * * * 2 * * * * *
+9 * * * * * * * * * * * * * * 5
+10 * * * * * * * * * * * * * * 1
+11 * * * * * * * * * * 1 * * * *
+12 * * * * * * * * * * * * * 1 *
+13 * * * * 9 * * * * * * * * * *
+14 * * * * * * * * * * * * * * *
+
+Starting cycle detection from node 0
+Checking node 0
+Node 0 added to visited and stack sets.
+Checking node 1
+Node 1 added to visited and stack sets.
+Checking node 3
+Node 3 added to visited and stack sets.
+Checking node 4
+Node 4 added to visited and stack sets.
+Checking node 5
+Node 5 added to visited and stack sets.
+Checking node 6
+Node 6 added to visited and stack sets.
+Checking node 7
+Node 7 added to visited and stack sets.
+Checking node 8
+Node 8 added to visited and stack sets.
+Checking node 9
+Node 9 added to visited and stack sets.
+Checking node 14
+Node 14 added to visited and stack sets.
+Node 14 removed from stack set.
+Node 9 removed from stack set.
+Node 8 removed from stack set.
+Node 7 removed from stack set.
+Checking node 13
+Node 13 added to visited and stack sets.
+Checking node 4
+Cycle detected: Node 4 is already in the stack.
+Error: The graph contains a cycle.
+The graph is not a valid scheduling graph.
+
+||| Welcome to Graph Theory 3000 |||
+
+Which table do you want to try ?
+2
+Here is the table :
+
+    Vertices    |           Duration    |       Predecessors    |
+           0    |                  0    |
+           1    |                  2    |                  0
+           2    |                  5    |                  0
+           3    |                  4    |                  1
+           4    |                  1    |                  3
+           5    |                  9    |                  4,            6,            8
+           6    |                  2    |                  1,            2
+           7    |                  5    |                  6
+           8    |                  5    |                  7
+           9    |                  9    |                  8
+          10    |                  2    |                  9
+          11    |                 19    |                  6
+          12    |                  5    |                  7,            8,            9,           10
+          13    |                  1    |                  6,           11
+          14    |                  0    |                  5,           12,           13
+
+Here is the display of the graph :
+
+15 vertices
+23 edges
+0 -> 1 = 0
+0 -> 2 = 0
+1 -> 3 = 2
+1 -> 6 = 2
+2 -> 6 = 5
+3 -> 4 = 4
+4 -> 5 = 1
+5 -> 14 = 9
+6 -> 5 = 2
+6 -> 7 = 2
+6 -> 11 = 2
+6 -> 13 = 2
+7 -> 8 = 5
+7 -> 12 = 5
+8 -> 5 = 5
+8 -> 9 = 5
+8 -> 12 = 5
+9 -> 10 = 9
+9 -> 12 = 9
+10 -> 12 = 2
+11 -> 13 = 19
+12 -> 14 = 5
+13 -> 14 = 1
+
+
+Here is the corresponding matrix :
+
+    0  1  2  3  4  5  6  7  8  9 10 11 12 13 14
+ 0  *  0  0  *  *  *  *  *  *  *  *  *  *  *  *
+ 1  *  *  *  2  *  *  2  *  *  *  *  *  *  *  *
+ 2  *  *  *  *  *  *  5  *  *  *  *  *  *  *  *
+ 3  *  *  *  *  4  *  *  *  *  *  *  *  *  *  *
+ 4  *  *  *  *  *  1  *  *  *  *  *  *  *  *  *
+ 5  *  *  *  *  *  *  *  *  *  *  *  *  *  *  9
+ 6  *  *  *  *  *  2  *  2  *  *  *  2  *  2  *
+ 7  *  *  *  *  *  *  *  *  5  *  *  *  5  *  *
+ 8  *  *  *  *  *  5  *  *  *  5  *  *  5  *  *
+ 9  *  *  *  *  *  *  *  *  *  *  9  *  9  *  *
+10  *  *  *  *  *  *  *  *  *  *  *  *  2  *  *
+11  *  *  *  *  *  *  *  *  *  *  *  *  * 19  *
+12  *  *  *  *  *  *  *  *  *  *  *  *  *  *  5
+13  *  *  *  *  *  *  *  *  *  *  *  *  *  *  1
+14  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+
+Starting cycle detection from node 0
+Checking node 0
+Node 0 added to visited and stack sets.
+Checking node 1
+Node 1 added to visited and stack sets.
+Checking node 3
+Node 3 added to visited and stack sets.
+Checking node 4
+Node 4 added to visited and stack sets.
+Checking node 5
+Node 5 added to visited and stack sets.
+Checking node 14
+Node 14 added to visited and stack sets.
+Node 14 removed from stack set.
+Node 5 removed from stack set.
+Node 4 removed from stack set.
+Node 3 removed from stack set.
+Checking node 6
+Node 6 added to visited and stack sets.
+Checking node 5
+Node 5 has already been visited.
+Checking node 7
+Node 7 added to visited and stack sets.
+Checking node 8
+Node 8 added to visited and stack sets.
+Checking node 5
+Node 5 has already been visited.
+Checking node 9
+Node 9 added to visited and stack sets.
+Checking node 10
+Node 10 added to visited and stack sets.
+Checking node 12
+Node 12 added to visited and stack sets.
+Checking node 14
+Node 14 has already been visited.
+Node 12 removed from stack set.
+Node 10 removed from stack set.
+Checking node 12
+Node 12 has already been visited.
+Node 9 removed from stack set.
+Checking node 12
+Node 12 has already been visited.
+Node 8 removed from stack set.
+Checking node 12
+Node 12 has already been visited.
+Node 7 removed from stack set.
+Checking node 11
+Node 11 added to visited and stack sets.
+Checking node 13
+Node 13 added to visited and stack sets.
+Checking node 14
+Node 14 has already been visited.
+Node 13 removed from stack set.
+Node 11 removed from stack set.
+Checking node 13
+Node 13 has already been visited.
+Node 6 removed from stack set.
+Node 1 removed from stack set.
+Checking node 2
+Node 2 added to visited and stack sets.
+Checking node 6
+Node 6 has already been visited.
+Node 2 removed from stack set.
+Node 0 removed from stack set.
+
+Starting cycle detection from node 1
+Checking node 1
+Node 1 has already been visited.
+
+Starting cycle detection from node 2
+Checking node 2
+Node 2 has already been visited.
+
+Starting cycle detection from node 3
+Checking node 3
+Node 3 has already been visited.
+
+Starting cycle detection from node 4
+Checking node 4
+Node 4 has already been visited.
+
+Starting cycle detection from node 5
+Checking node 5
+Node 5 has already been visited.
+
+Starting cycle detection from node 6
+Checking node 6
+Node 6 has already been visited.
+
+Starting cycle detection from node 7
+Checking node 7
+Node 7 has already been visited.
+
+Starting cycle detection from node 8
+Checking node 8
+Node 8 has already been visited.
+
+Starting cycle detection from node 9
+Checking node 9
+Node 9 has already been visited.
+
+Starting cycle detection from node 10
+Checking node 10
+Node 10 has already been visited.
+
+Starting cycle detection from node 11
+Checking node 11
+Node 11 has already been visited.
+
+Starting cycle detection from node 12
+Checking node 12
+Node 12 has already been visited.
+
+Starting cycle detection from node 13
+Checking node 13
+Node 13 has already been visited.
+
+Starting cycle detection from node 14
+Checking node 14
+Node 14 has already been visited.
+
+The graph is a valid scheduling graph.
+
+Calendars:
+Task 0: Start Time = 0, End Time = 0
+Task 2: Start Time = 0, End Time = 5
+Task 1: Start Time = 0, End Time = 2
+Task 6: Start Time = 5, End Time = 7
+Task 11: Start Time = 7, End Time = 26
+Task 13: Start Time = 26, End Time = 27
+Task 7: Start Time = 7, End Time = 12
+Task 8: Start Time = 12, End Time = 17
+Task 9: Start Time = 17, End Time = 26
+Task 10: Start Time = 26, End Time = 28
+Task 12: Start Time = 28, End Time = 33
+Task 3: Start Time = 2, End Time = 6
+Task 4: Start Time = 6, End Time = 7
+Task 5: Start Time = 17, End Time = 26
+Task 14: Start Time = 33, End Time = 33
+
+Ranks:
+Task 0: Rank 0
+Task 1: Rank 1
+Task 2: Rank 1
+Task 3: Rank 2
+Task 6: Rank 2
+Task 4: Rank 3
+Task 7: Rank 3
+Task 11: Rank 3
+Task 8: Rank 4
+Task 13: Rank 4
+Task 5: Rank 5
+Task 9: Rank 5
+Task 10: Rank 6
+Task 12: Rank 7
+Task 14: Rank 8
+
+Earliest date:
+Task 0: Earliest date = 0
+Task 2: Earliest date = 0
+Task 1: Earliest date = 0
+Task 3: Earliest date = 2
+Task 6: Earliest date = 5
+Task 4: Earliest date = 6
+Task 11: Earliest date = 7
+Task 7: Earliest date = 7
+Task 8: Earliest date = 12
+Task 9: Earliest date = 17
+Task 5: Earliest date = 17
+Task 13: Earliest date = 26
+Task 10: Earliest date = 26
+Task 12: Earliest date = 28
+Task 14: Earliest date = 33
+
+Latest date:
+Task 0: Latest date = 0
+Task 2: Latest date = 0
+Task 1: Latest date = 3
+Task 6: Latest date = 5
+Task 7: Latest date = 7
+Task 8: Latest date = 12
+Task 11: Latest date = 13
+Task 9: Latest date = 17
+Task 3: Latest date = 19
+Task 4: Latest date = 23
+Task 5: Latest date = 24
+Task 10: Latest date = 26
+Task 12: Latest date = 28
+Task 13: Latest date = 32
+Task 14: Latest date = 33
+
+Total Float:
+Task 0: Total Float = 0
+Task 2: Total Float = 0
+Task 6: Total Float = 0
+Task 7: Total Float = 0
+Task 8: Total Float = 0
+Task 9: Total Float = 0
+Task 10: Total Float = 0
+Task 12: Total Float = 0
+Task 14: Total Float = 0
+Task 1: Total Float = 3
+Task 11: Total Float = 6
+Task 13: Total Float = 6
+Task 5: Total Float = 7
+Task 3: Total Float = 17
+Task 4: Total Float = 17
+
+Critical Paths:
+Path 1: Task 0 -> Task 2 -> Task 6 -> Task 7 -> Task 8 -> Task 9 -> Task 10 -> Task 12 -> Task 14
+Path 2: Task 0 -> Task 2 -> Task 6 -> Task 7 -> Task 8 -> Task 9 -> Task 12 -> Task 14
+Path 3: Task 0 -> Task 2 -> Task 6 -> Task 7 -> Task 8 -> Task 12 -> Task 14
+Path 4: Task 0 -> Task 2 -> Task 6 -> Task 7 -> Task 12 -> Task 14
+
+||| Welcome to Graph Theory 3000 |||
+
+Which table do you want to try ?
+3
+Here is the table :
+
+    Vertices    |           Duration    |       Predecessors    |
+           0    |                  0    |
+           1    |                  2    |                  0
+           2    |                  5    |                  0
+           3    |                  4    |                  1,            2,            4
+           4    |                  2    |                  2
+           5    |                  5    |                  4
+           6    |                  5    |                  5
+           7    |                  9    |                  6
+           8    |                  1    |                  4,            6,            7,           12
+           9    |                  5    |                  5,            6,            7
+          10    |                  9    |                 11
+          11    |                  1    |                  4
+          12    |                  1    |                  3
+          13    |                  0    |                  8,            9,           10
+
+Here is the display of the graph :
+
+14 vertices
+22 edges
+0 -> 1 = 0
+0 -> 2 = 0
+1 -> 3 = 2
+2 -> 3 = 5
+2 -> 4 = 5
+3 -> 12 = 4
+4 -> 3 = 2
+4 -> 5 = 2
+4 -> 8 = 2
+4 -> 11 = 2
+5 -> 6 = 5
+5 -> 9 = 5
+6 -> 7 = 5
+6 -> 8 = 5
+6 -> 9 = 5
+7 -> 8 = 9
+7 -> 9 = 9
+8 -> 13 = 1
+9 -> 13 = 5
+10 -> 13 = 9
+11 -> 10 = 1
+12 -> 8 = 1
+
+
+Here is the corresponding matrix :
+
+  0 1 2 3 4 5 6 7 8 9 10 11 12 13
+0 * 0 0 * * * * * * * * * * *
+1 * * * 2 * * * * * * * * * *
+2 * * * 5 5 * * * * * * * * *
+3 * * * * * * * * * * * * 4 *
+4 * * * 2 * 2 * * 2 * * 2 * *
+5 * * * * * * 5 * * 5 * * * *
+6 * * * * * * * 5 5 5 * * * *
+7 * * * * * * * * 9 9 * * * *
+8 * * * * * * * * * * * * * 1
+9 * * * * * * * * * * * * * 5
+10 * * * * * * * * * * * * * 9
+11 * * * * * * * * * * 1 * * *
+12 * * * * * * * * 1 * * * * *
+13 * * * * * * * * * * * * * *
+
+Starting cycle detection from node 0
+Checking node 0
+Node 0 added to visited and stack sets.
+Checking node 1
+Node 1 added to visited and stack sets.
+Checking node 3
+Node 3 added to visited and stack sets.
+Checking node 12
+Node 12 added to visited and stack sets.
+Checking node 8
+Node 8 added to visited and stack sets.
+Checking node 13
+Node 13 added to visited and stack sets.
+Node 13 removed from stack set.
+Node 8 removed from stack set.
+Node 12 removed from stack set.
+Node 3 removed from stack set.
+Node 1 removed from stack set.
+Checking node 2
+Node 2 added to visited and stack sets.
+Checking node 3
+Node 3 has already been visited.
+Checking node 4
+Node 4 added to visited and stack sets.
+Checking node 3
+Node 3 has already been visited.
+Checking node 5
+Node 5 added to visited and stack sets.
+Checking node 6
+Node 6 added to visited and stack sets.
+Checking node 7
+Node 7 added to visited and stack sets.
+Checking node 8
+Node 8 has already been visited.
+Checking node 9
+Node 9 added to visited and stack sets.
+Checking node 13
+Node 13 has already been visited.
+Node 9 removed from stack set.
+Node 7 removed from stack set.
+Checking node 8
+Node 8 has already been visited.
+Checking node 9
+Node 9 has already been visited.
+Node 6 removed from stack set.
+Checking node 9
+Node 9 has already been visited.
+Node 5 removed from stack set.
+Checking node 8
+Node 8 has already been visited.
+Checking node 11
+Node 11 added to visited and stack sets.
+Checking node 10
+Node 10 added to visited and stack sets.
+Checking node 13
+Node 13 has already been visited.
+Node 10 removed from stack set.
+Node 11 removed from stack set.
+Node 4 removed from stack set.
+Node 2 removed from stack set.
+Node 0 removed from stack set.
+
+Starting cycle detection from node 1
+Checking node 1
+Node 1 has already been visited.
+
+Starting cycle detection from node 2
+Checking node 2
+Node 2 has already been visited.
+
+Starting cycle detection from node 3
+Checking node 3
+Node 3 has already been visited.
+
+Starting cycle detection from node 4
+Checking node 4
+Node 4 has already been visited.
+
+Starting cycle detection from node 5
+Checking node 5
+Node 5 has already been visited.
+
+Starting cycle detection from node 6
+Checking node 6
+Node 6 has already been visited.
+
+Starting cycle detection from node 7
+Checking node 7
+Node 7 has already been visited.
+
+Starting cycle detection from node 8
+Checking node 8
+Node 8 has already been visited.
+
+Starting cycle detection from node 9
+Checking node 9
+Node 9 has already been visited.
+
+Starting cycle detection from node 10
+Checking node 10
+Node 10 has already been visited.
+
+Starting cycle detection from node 11
+Checking node 11
+Node 11 has already been visited.
+
+Starting cycle detection from node 12
+Checking node 12
+Node 12 has already been visited.
+
+Starting cycle detection from node 13
+Checking node 13
+Node 13 has already been visited.
+
+The graph is a valid scheduling graph.
+
+Calendars:
+Task 0: Start Time = 0, End Time = 0
+Task 2: Start Time = 0, End Time = 5
+Task 4: Start Time = 5, End Time = 7
+Task 11: Start Time = 7, End Time = 8
+Task 10: Start Time = 8, End Time = 17
+Task 5: Start Time = 7, End Time = 12
+Task 6: Start Time = 12, End Time = 17
+Task 7: Start Time = 17, End Time = 26
+Task 9: Start Time = 26, End Time = 31
+Task 1: Start Time = 0, End Time = 2
+Task 3: Start Time = 7, End Time = 11
+Task 12: Start Time = 11, End Time = 12
+Task 8: Start Time = 26, End Time = 27
+Task 13: Start Time = 31, End Time = 31
+
+Ranks:
+Task 0: Rank 0
+Task 1: Rank 1
+Task 2: Rank 1
+Task 4: Rank 2
+Task 3: Rank 3
+Task 5: Rank 3
+Task 11: Rank 3
+Task 6: Rank 4
+Task 10: Rank 4
+Task 12: Rank 4
+Task 7: Rank 5
+Task 8: Rank 6
+Task 9: Rank 6
+Task 13: Rank 7
+
+Earliest date:
+Task 0: Earliest date = 0
+Task 2: Earliest date = 0
+Task 1: Earliest date = 0
+Task 4: Earliest date = 5
+Task 11: Earliest date = 7
+Task 5: Earliest date = 7
+Task 3: Earliest date = 7
+Task 10: Earliest date = 8
+Task 12: Earliest date = 11
+Task 6: Earliest date = 12
+Task 7: Earliest date = 17
+Task 9: Earliest date = 26
+Task 8: Earliest date = 26
+Task 13: Earliest date = 31
+
+Latest date:
+Task 0: Latest date = 0
+Task 2: Latest date = 0
+Task 4: Latest date = 5
+Task 5: Latest date = 7
+Task 6: Latest date = 12
+Task 7: Latest date = 17
+Task 11: Latest date = 21
+Task 10: Latest date = 22
+Task 1: Latest date = 23
+Task 3: Latest date = 25
+Task 9: Latest date = 26
+Task 12: Latest date = 29
+Task 8: Latest date = 30
+Task 13: Latest date = 31
+
+Total Float:
+Task 0: Total Float = 0
+Task 2: Total Float = 0
+Task 4: Total Float = 0
+Task 5: Total Float = 0
+Task 6: Total Float = 0
+Task 7: Total Float = 0
+Task 9: Total Float = 0
+Task 13: Total Float = 0
+Task 8: Total Float = 4
+Task 10: Total Float = 14
+Task 11: Total Float = 14
+Task 3: Total Float = 18
+Task 12: Total Float = 18
+Task 1: Total Float = 23
+
+Critical Paths:
+Path 1: Task 0 -> Task 2 -> Task 4 -> Task 5 -> Task 6 -> Task 7 -> Task 9 -> Task 13
+Path 2: Task 0 -> Task 2 -> Task 4 -> Task 5 -> Task 6 -> Task 9 -> Task 13
+Path 3: Task 0 -> Task 2 -> Task 4 -> Task 5 -> Task 9 -> Task 13
+
+||| Welcome to Graph Theory 3000 |||
+
+Which table do you want to try ?
+4
+Here is the table :
+
+    Vertices    |           Duration    |       Predecessors    |
+           0    |                  0    |
+           1    |                  3    |                  0
+           2    |                  2    |                  0
+           3    |                  3    |                  2
+           4    |                  5    |                  1
+           5    |                  4    |                  4
+           6    |                  2    |                  5
+           7    |                  2    |                  4
+           8    |                  4    |                  5,            7
+           9    |                  5    |                  4
+          10    |                  1    |                  3,            9
+          11    |                  2    |                  6,            8
+          12    |                  0    |                 10,           11
+
+Here is the display of the graph :
+
+13 vertices
+16 edges
+0 -> 1 = 0
+0 -> 2 = 0
+1 -> 4 = 3
+2 -> 3 = 2
+3 -> 10 = 3
+4 -> 5 = 5
+4 -> 7 = 5
+4 -> 9 = 5
+5 -> 6 = 4
+5 -> 8 = 4
+6 -> 11 = 2
+7 -> 8 = 2
+8 -> 11 = 4
+9 -> 10 = 5
+10 -> 12 = 1
+11 -> 12 = 2
+
+
+Here is the corresponding matrix :
+
+  0 1 2 3 4 5 6 7 8 9 10 11 12
+0 * 0 0 * * * * * * * * * *
+1 * * * * 3 * * * * * * * *
+2 * * * 2 * * * * * * * * *
+3 * * * * * * * * * * 3 * *
+4 * * * * * 5 * 5 * 5 * * *
+5 * * * * * * 4 * 4 * * * *
+6 * * * * * * * * * * * 2 *
+7 * * * * * * * * 2 * * * *
+8 * * * * * * * * * * * 4 *
+9 * * * * * * * * * * 5 * *
+10 * * * * * * * * * * * * 1
+11 * * * * * * * * * * * * 2
+12 * * * * * * * * * * * * *
+
+Starting cycle detection from node 0
+Checking node 0
+Node 0 added to visited and stack sets.
+Checking node 1
+Node 1 added to visited and stack sets.
+Checking node 4
+Node 4 added to visited and stack sets.
+Checking node 5
+Node 5 added to visited and stack sets.
+Checking node 6
+Node 6 added to visited and stack sets.
+Checking node 11
+Node 11 added to visited and stack sets.
+Checking node 12
+Node 12 added to visited and stack sets.
+Node 12 removed from stack set.
+Node 11 removed from stack set.
+Node 6 removed from stack set.
+Checking node 8
+Node 8 added to visited and stack sets.
+Checking node 11
+Node 11 has already been visited.
+Node 8 removed from stack set.
+Node 5 removed from stack set.
+Checking node 7
+Node 7 added to visited and stack sets.
+Checking node 8
+Node 8 has already been visited.
+Node 7 removed from stack set.
+Checking node 9
+Node 9 added to visited and stack sets.
+Checking node 10
+Node 10 added to visited and stack sets.
+Checking node 12
+Node 12 has already been visited.
+Node 10 removed from stack set.
+Node 9 removed from stack set.
+Node 4 removed from stack set.
+Node 1 removed from stack set.
+Checking node 2
+Node 2 added to visited and stack sets.
+Checking node 3
+Node 3 added to visited and stack sets.
+Checking node 10
+Node 10 has already been visited.
+Node 3 removed from stack set.
+Node 2 removed from stack set.
+Node 0 removed from stack set.
+
+Starting cycle detection from node 1
+Checking node 1
+Node 1 has already been visited.
+
+Starting cycle detection from node 2
+Checking node 2
+Node 2 has already been visited.
+
+Starting cycle detection from node 3
+Checking node 3
+Node 3 has already been visited.
+
+Starting cycle detection from node 4
+Checking node 4
+Node 4 has already been visited.
+
+Starting cycle detection from node 5
+Checking node 5
+Node 5 has already been visited.
+
+Starting cycle detection from node 6
+Checking node 6
+Node 6 has already been visited.
+
+Starting cycle detection from node 7
+Checking node 7
+Node 7 has already been visited.
+
+Starting cycle detection from node 8
+Checking node 8
+Node 8 has already been visited.
+
+Starting cycle detection from node 9
+Checking node 9
+Node 9 has already been visited.
+
+Starting cycle detection from node 10
+Checking node 10
+Node 10 has already been visited.
+
+Starting cycle detection from node 11
+Checking node 11
+Node 11 has already been visited.
+
+Starting cycle detection from node 12
+Checking node 12
+Node 12 has already been visited.
+
+The graph is a valid scheduling graph.
+
+Calendars:
+Task 0: Start Time = 0, End Time = 0
+Task 2: Start Time = 0, End Time = 2
+Task 3: Start Time = 2, End Time = 5
+Task 1: Start Time = 0, End Time = 3
+Task 4: Start Time = 3, End Time = 8
+Task 9: Start Time = 8, End Time = 13
+Task 10: Start Time = 13, End Time = 14
+Task 7: Start Time = 8, End Time = 10
+Task 5: Start Time = 8, End Time = 12
+Task 8: Start Time = 12, End Time = 16
+Task 6: Start Time = 12, End Time = 14
+Task 11: Start Time = 16, End Time = 18
+Task 12: Start Time = 18, End Time = 18
+
+Ranks:
+Task 0: Rank 0
+Task 1: Rank 1
+Task 2: Rank 1
+Task 3: Rank 2
+Task 4: Rank 2
+Task 5: Rank 3
+Task 7: Rank 3
+Task 9: Rank 3
+Task 6: Rank 4
+Task 8: Rank 4
+Task 10: Rank 4
+Task 11: Rank 5
+Task 12: Rank 6
+
+Earliest date:
+Task 0: Earliest date = 0
+Task 2: Earliest date = 0
+Task 1: Earliest date = 0
+Task 3: Earliest date = 2
+Task 4: Earliest date = 3
+Task 9: Earliest date = 8
+Task 7: Earliest date = 8
+Task 5: Earliest date = 8
+Task 8: Earliest date = 12
+Task 6: Earliest date = 12
+Task 10: Earliest date = 13
+Task 11: Earliest date = 16
+Task 12: Earliest date = 18
+
+Latest date:
+Task 0: Latest date = 0
+Task 1: Latest date = 0
+Task 4: Latest date = 3
+Task 5: Latest date = 8
+Task 7: Latest date = 10
+Task 2: Latest date = 12
+Task 9: Latest date = 12
+Task 8: Latest date = 12
+Task 3: Latest date = 14
+Task 6: Latest date = 14
+Task 11: Latest date = 16
+Task 10: Latest date = 17
+Task 12: Latest date = 18
+
+Total Float:
+Task 0: Total Float = 0
+Task 1: Total Float = 0
+Task 4: Total Float = 0
+Task 5: Total Float = 0
+Task 8: Total Float = 0
+Task 11: Total Float = 0
+Task 12: Total Float = 0
+Task 6: Total Float = 2
+Task 7: Total Float = 2
+Task 9: Total Float = 4
+Task 10: Total Float = 4
+Task 2: Total Float = 12
+Task 3: Total Float = 12
+
+Critical Paths:
+Path 1: Task 0 -> Task 1 -> Task 4 -> Task 5 -> Task 8 -> Task 11 -> Task 12
+
+||| Welcome to Graph Theory 3000 |||
+
+Which table do you want to try ?
+5
+Here is the table :
+
+    Vertices    |           Duration    |       Predecessors    |
+           0    |                  0    |
+           1    |                  2    |                  0
+           2    |                  5    |                  0
+           3    |                  4    |                  1
+           4    |                  2    |                  2,            3
+           5    |                  5    |                  4
+           6    |                  5    |                  5
+           7    |                  9    |                  6
+           8    |                  2    |                  7
+           9    |                  5    |                  8
+          10    |                  1    |                 11
+          11    |                  1    |                  4
+          12    |                  1    |                  3
+          13    |                  9    |                  6,           12
+          14    |                  0    |                  9,           10,           13
+
+Here is the display of the graph :
+
+15 vertices
+18 edges
+0 -> 1 = 0
+0 -> 2 = 0
+1 -> 3 = 2
+2 -> 4 = 5
+3 -> 4 = 4
+3 -> 12 = 4
+4 -> 5 = 2
+4 -> 11 = 2
+5 -> 6 = 5
+6 -> 7 = 5
+6 -> 13 = 5
+7 -> 8 = 9
+8 -> 9 = 2
+9 -> 14 = 5
+10 -> 14 = 1
+11 -> 10 = 1
+12 -> 13 = 1
+13 -> 14 = 9
+
+
+Here is the corresponding matrix :
+
+  0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+0 * 0 0 * * * * * * * * * * * *
+1 * * * 2 * * * * * * * * * * *
+2 * * * * 5 * * * * * * * * * *
+3 * * * * 4 * * * * * * * 4 * *
+4 * * * * * 2 * * * * * 2 * * *
+5 * * * * * * 5 * * * * * * * *
+6 * * * * * * * 5 * * * * * 5 *
+7 * * * * * * * * 9 * * * * * *
+8 * * * * * * * * * 2 * * * * *
+9 * * * * * * * * * * * * * * 5
+10 * * * * * * * * * * * * * * 1
+11 * * * * * * * * * * 1 * * * *
+12 * * * * * * * * * * * * * 1 *
+13 * * * * * * * * * * * * * * 9
+14 * * * * * * * * * * * * * * *
+
+Starting cycle detection from node 0
+Checking node 0
+Node 0 added to visited and stack sets.
+Checking node 1
+Node 1 added to visited and stack sets.
+Checking node 3
+Node 3 added to visited and stack sets.
+Checking node 4
+Node 4 added to visited and stack sets.
+Checking node 5
+Node 5 added to visited and stack sets.
+Checking node 6
+Node 6 added to visited and stack sets.
+Checking node 7
+Node 7 added to visited and stack sets.
+Checking node 8
+Node 8 added to visited and stack sets.
+Checking node 9
+Node 9 added to visited and stack sets.
+Checking node 14
+Node 14 added to visited and stack sets.
+Node 14 removed from stack set.
+Node 9 removed from stack set.
+Node 8 removed from stack set.
+Node 7 removed from stack set.
+Checking node 13
+Node 13 added to visited and stack sets.
+Checking node 14
+Node 14 has already been visited.
+Node 13 removed from stack set.
+Node 6 removed from stack set.
+Node 5 removed from stack set.
+Checking node 11
+Node 11 added to visited and stack sets.
+Checking node 10
+Node 10 added to visited and stack sets.
+Checking node 14
+Node 14 has already been visited.
+Node 10 removed from stack set.
+Node 11 removed from stack set.
+Node 4 removed from stack set.
+Checking node 12
+Node 12 added to visited and stack sets.
+Checking node 13
+Node 13 has already been visited.
+Node 12 removed from stack set.
+Node 3 removed from stack set.
+Node 1 removed from stack set.
+Checking node 2
+Node 2 added to visited and stack sets.
+Checking node 4
+Node 4 has already been visited.
+Node 2 removed from stack set.
+Node 0 removed from stack set.
+
+Starting cycle detection from node 1
+Checking node 1
+Node 1 has already been visited.
+
+Starting cycle detection from node 2
+Checking node 2
+Node 2 has already been visited.
+
+Starting cycle detection from node 3
+Checking node 3
+Node 3 has already been visited.
+
+Starting cycle detection from node 4
+Checking node 4
+Node 4 has already been visited.
+
+Starting cycle detection from node 5
+Checking node 5
+Node 5 has already been visited.
+
+Starting cycle detection from node 6
+Checking node 6
+Node 6 has already been visited.
+
+Starting cycle detection from node 7
+Checking node 7
+Node 7 has already been visited.
+
+Starting cycle detection from node 8
+Checking node 8
+Node 8 has already been visited.
+
+Starting cycle detection from node 9
+Checking node 9
+Node 9 has already been visited.
+
+Starting cycle detection from node 10
+Checking node 10
+Node 10 has already been visited.
+
+Starting cycle detection from node 11
+Checking node 11
+Node 11 has already been visited.
+
+Starting cycle detection from node 12
+Checking node 12
+Node 12 has already been visited.
+
+Starting cycle detection from node 13
+Checking node 13
+Node 13 has already been visited.
+
+Starting cycle detection from node 14
+Checking node 14
+Node 14 has already been visited.
+
+The graph is a valid scheduling graph.
+
+Calendars:
+Task 0: Start Time = 0, End Time = 0
+Task 2: Start Time = 0, End Time = 5
+Task 1: Start Time = 0, End Time = 2
+Task 3: Start Time = 2, End Time = 6
+Task 12: Start Time = 6, End Time = 7
+Task 4: Start Time = 6, End Time = 8
+Task 11: Start Time = 8, End Time = 9
+Task 10: Start Time = 9, End Time = 10
+Task 5: Start Time = 8, End Time = 13
+Task 6: Start Time = 13, End Time = 18
+Task 13: Start Time = 18, End Time = 27
+Task 7: Start Time = 18, End Time = 27
+Task 8: Start Time = 27, End Time = 29
+Task 9: Start Time = 29, End Time = 34
+Task 14: Start Time = 34, End Time = 34
+
+Ranks:
+Task 0: Rank 0
+Task 1: Rank 1
+Task 2: Rank 1
+Task 3: Rank 2
+Task 4: Rank 3
+Task 12: Rank 3
+Task 5: Rank 4
+Task 11: Rank 4
+Task 6: Rank 5
+Task 10: Rank 5
+Task 7: Rank 6
+Task 13: Rank 6
+Task 8: Rank 7
+Task 9: Rank 8
+Task 14: Rank 9
+
+Earliest date:
+Task 0: Earliest date = 0
+Task 2: Earliest date = 0
+Task 1: Earliest date = 0
+Task 3: Earliest date = 2
+Task 12: Earliest date = 6
+Task 4: Earliest date = 6
+Task 11: Earliest date = 8
+Task 5: Earliest date = 8
+Task 10: Earliest date = 9
+Task 6: Earliest date = 13
+Task 13: Earliest date = 18
+Task 7: Earliest date = 18
+Task 8: Earliest date = 27
+Task 9: Earliest date = 29
+Task 14: Earliest date = 34
+
+Latest date:
+Task 0: Latest date = 0
+Task 1: Latest date = 0
+Task 2: Latest date = 1
+Task 3: Latest date = 2
+Task 4: Latest date = 6
+Task 5: Latest date = 8
+Task 6: Latest date = 13
+Task 7: Latest date = 18
+Task 12: Latest date = 24
+Task 13: Latest date = 25
+Task 8: Latest date = 27
+Task 9: Latest date = 29
+Task 11: Latest date = 32
+Task 10: Latest date = 33
+Task 14: Latest date = 34
+
+Total Float:
+Task 0: Total Float = 0
+Task 1: Total Float = 0
+Task 3: Total Float = 0
+Task 4: Total Float = 0
+Task 5: Total Float = 0
+Task 6: Total Float = 0
+Task 7: Total Float = 0
+Task 8: Total Float = 0
+Task 9: Total Float = 0
+Task 14: Total Float = 0
+Task 2: Total Float = 1
+Task 13: Total Float = 7
+Task 12: Total Float = 18
+Task 10: Total Float = 24
+Task 11: Total Float = 24
+
+Critical Paths:
+Path 1: Task 0 -> Task 1 -> Task 3 -> Task 4 -> Task 5 -> Task 6 -> Task 7 -> Task 8 -> Task 9 -> Task 14
+
+
+
+||| Welcome to Graph Theory 3000 |||
+
+Which table do you want to try ?
+6
+Here is the table :
+
+    Vertices    |           Duration    |       Predecessors    |
+           0    |                  0    |
+           1    |                 10    |                  0
+           2    |                 10    |                  0
+           3    |                  9    |                  1,            2
+           4    |                  5    |                  1,            2
+           5    |                  4    |                  4
+           6    |                  2    |                  5
+           7    |                  2    |                  4
+           8    |                  4    |                  5,            7,            9
+           9    |                  8    |                  3,            4
+          10    |                 12    |                  3,            9
+          11    |                  2    |                  6,            8,           10
+          12    |                 20    |                  1,            6
+          13    |                  0    |                 11,           12
+
+Here is the display of the graph :
+
+14 vertices
+23 edges
+0 -> 1 = 0
+0 -> 2 = 0
+1 -> 3 = 10
+1 -> 4 = 10
+1 -> 12 = 10
+2 -> 3 = 10
+2 -> 4 = 10
+3 -> 9 = 9
+3 -> 10 = 9
+4 -> 5 = 5
+4 -> 7 = 5
+4 -> 9 = 5
+5 -> 6 = 4
+5 -> 8 = 4
+6 -> 11 = 2
+6 -> 12 = 2
+7 -> 8 = 2
+8 -> 11 = 4
+9 -> 8 = 8
+9 -> 10 = 8
+10 -> 11 = 12
+11 -> 13 = 2
+12 -> 13 = 20
+
+
+Here is the corresponding matrix :
+
+    0  1  2  3  4  5  6  7  8  9 10 11 12 13
+ 0  *  0  0  *  *  *  *  *  *  *  *  *  *  *
+ 1  *  *  * 10 10  *  *  *  *  *  *  * 10  *
+ 2  *  *  * 10 10  *  *  *  *  *  *  *  *  *
+ 3  *  *  *  *  *  *  *  *  *  9  9  *  *  *
+ 4  *  *  *  *  *  5  *  5  *  5  *  *  *  *
+ 5  *  *  *  *  *  *  4  *  4  *  *  *  *  *
+ 6  *  *  *  *  *  *  *  *  *  *  *  2  2  *
+ 7  *  *  *  *  *  *  *  *  2  *  *  *  *  *
+ 8  *  *  *  *  *  *  *  *  *  *  *  4  *  *
+ 9  *  *  *  *  *  *  *  *  8  *  8  *  *  *
+10  *  *  *  *  *  *  *  *  *  *  * 12  *  *
+11  *  *  *  *  *  *  *  *  *  *  *  *  *  2
+12  *  *  *  *  *  *  *  *  *  *  *  *  * 20
+13  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+
+Starting cycle detection from node 0
+Checking node 0
+Node 0 added to visited and stack sets.
+Checking node 1
+Node 1 added to visited and stack sets.
+Checking node 3
+Node 3 added to visited and stack sets.
+Checking node 9
+Node 9 added to visited and stack sets.
+Checking node 8
+Node 8 added to visited and stack sets.
+Checking node 11
+Node 11 added to visited and stack sets.
+Checking node 13
+Node 13 added to visited and stack sets.
+Node 13 removed from stack set.
+Node 11 removed from stack set.
+Node 8 removed from stack set.
+Checking node 10
+Node 10 added to visited and stack sets.
+Checking node 11
+Node 11 has already been visited.
+Node 10 removed from stack set.
+Node 9 removed from stack set.
+Checking node 10
+Node 10 has already been visited.
+Node 3 removed from stack set.
+Checking node 4
+Node 4 added to visited and stack sets.
+Checking node 5
+Node 5 added to visited and stack sets.
+Checking node 6
+Node 6 added to visited and stack sets.
+Checking node 11
+Node 11 has already been visited.
+Checking node 12
+Node 12 added to visited and stack sets.
+Checking node 13
+Node 13 has already been visited.
+Node 12 removed from stack set.
+Node 6 removed from stack set.
+Checking node 8
+Node 8 has already been visited.
+Node 5 removed from stack set.
+Checking node 7
+Node 7 added to visited and stack sets.
+Checking node 8
+Node 8 has already been visited.
+Node 7 removed from stack set.
+Checking node 9
+Node 9 has already been visited.
+Node 4 removed from stack set.
+Checking node 12
+Node 12 has already been visited.
+Node 1 removed from stack set.
+Checking node 2
+Node 2 added to visited and stack sets.
+Checking node 3
+Node 3 has already been visited.
+Checking node 4
+Node 4 has already been visited.
+Node 2 removed from stack set.
+Node 0 removed from stack set.
+
+Starting cycle detection from node 1
+Checking node 1
+Node 1 has already been visited.
+
+Starting cycle detection from node 2
+Checking node 2
+Node 2 has already been visited.
+
+Starting cycle detection from node 3
+Checking node 3
+Node 3 has already been visited.
+
+Starting cycle detection from node 4
+Checking node 4
+Node 4 has already been visited.
+
+Starting cycle detection from node 5
+Checking node 5
+Node 5 has already been visited.
+
+Starting cycle detection from node 6
+Checking node 6
+Node 6 has already been visited.
+
+Starting cycle detection from node 7
+Checking node 7
+Node 7 has already been visited.
+
+Starting cycle detection from node 8
+Checking node 8
+Node 8 has already been visited.
+
+Starting cycle detection from node 9
+Checking node 9
+Node 9 has already been visited.
+
+Starting cycle detection from node 10
+Checking node 10
+Node 10 has already been visited.
+
+Starting cycle detection from node 11
+Checking node 11
+Node 11 has already been visited.
+
+Starting cycle detection from node 12
+Checking node 12
+Node 12 has already been visited.
+
+Starting cycle detection from node 13
+Checking node 13
+Node 13 has already been visited.
+
+The graph is a valid scheduling graph.
+
+Calendars:
+Task 0: Start Time = 0, End Time = 0
+Task 2: Start Time = 0, End Time = 10
+Task 1: Start Time = 0, End Time = 10
+Task 4: Start Time = 10, End Time = 15
+Task 7: Start Time = 15, End Time = 17
+Task 5: Start Time = 15, End Time = 19
+Task 6: Start Time = 19, End Time = 21
+Task 12: Start Time = 21, End Time = 41
+Task 3: Start Time = 10, End Time = 19
+Task 9: Start Time = 19, End Time = 27
+Task 10: Start Time = 27, End Time = 39
+Task 8: Start Time = 27, End Time = 31
+Task 11: Start Time = 39, End Time = 41
+Task 13: Start Time = 41, End Time = 41
+
+Ranks:
+Task 0: Rank 0
+Task 1: Rank 1
+Task 2: Rank 1
+Task 3: Rank 2
+Task 4: Rank 2
+Task 5: Rank 3
+Task 7: Rank 3
+Task 9: Rank 3
+Task 6: Rank 4
+Task 8: Rank 4
+Task 10: Rank 4
+Task 11: Rank 5
+Task 12: Rank 5
+Task 13: Rank 6
+
+Earliest date:
+Task 0: Earliest date = 0
+Task 2: Earliest date = 0
+Task 1: Earliest date = 0
+Task 4: Earliest date = 10
+Task 3: Earliest date = 10
+Task 7: Earliest date = 15
+Task 5: Earliest date = 15
+Task 6: Earliest date = 19
+Task 9: Earliest date = 19
+Task 12: Earliest date = 21
+Task 10: Earliest date = 27
+Task 8: Earliest date = 27
+Task 11: Earliest date = 39
+Task 13: Earliest date = 41
+
+Latest date:
+Task 0: Latest date = 0
+Task 2: Latest date = 0
+Task 1: Latest date = 0
+Task 4: Latest date = 10
+Task 3: Latest date = 10
+Task 5: Latest date = 15
+Task 6: Latest date = 19
+Task 9: Latest date = 19
+Task 12: Latest date = 21
+Task 10: Latest date = 27
+Task 7: Latest date = 33
+Task 8: Latest date = 35
+Task 11: Latest date = 39
+Task 13: Latest date = 41
+
+Total Float:
+Task 0: Total Float = 0
+Task 1: Total Float = 0
+Task 2: Total Float = 0
+Task 3: Total Float = 0
+Task 4: Total Float = 0
+Task 5: Total Float = 0
+Task 6: Total Float = 0
+Task 9: Total Float = 0
+Task 10: Total Float = 0
+Task 11: Total Float = 0
+Task 12: Total Float = 0
+Task 13: Total Float = 0
+Task 8: Total Float = 8
+Task 7: Total Float = 18
+
+Critical Paths:
+Path 1: Task 0 -> Task 1 -> Task 3 -> Task 9 -> Task 10 -> Task 11 -> Task 13
+Path 2: Task 0 -> Task 1 -> Task 3 -> Task 10 -> Task 11 -> Task 13
+Path 3: Task 0 -> Task 1 -> Task 4 -> Task 5 -> Task 6 -> Task 11 -> Task 13
+Path 4: Task 0 -> Task 1 -> Task 4 -> Task 5 -> Task 6 -> Task 12 -> Task 13
+Path 5: Task 0 -> Task 1 -> Task 4 -> Task 9 -> Task 10 -> Task 11 -> Task 13
+Path 6: Task 0 -> Task 1 -> Task 12 -> Task 13
+Path 7: Task 0 -> Task 2 -> Task 3 -> Task 9 -> Task 10 -> Task 11 -> Task 13
+Path 8: Task 0 -> Task 2 -> Task 3 -> Task 10 -> Task 11 -> Task 13
+Path 9: Task 0 -> Task 2 -> Task 4 -> Task 5 -> Task 6 -> Task 11 -> Task 13
+Path 10: Task 0 -> Task 2 -> Task 4 -> Task 5 -> Task 6 -> Task 12 -> Task 13
+Path 11: Task 0 -> Task 2 -> Task 4 -> Task 9 -> Task 10 -> Task 11 -> Task 13
+
+||| Welcome to Graph Theory 3000 |||
+
+Which table do you want to try ?
+7
+Here is the table :
+
+    Vertices    |           Duration    |       Predecessors    |
+           0    |                  0    |
+           1    |                  1    |                  4,           10
+           2    |                  2    |                  7
+           3    |                  3    |                  6
+           4    |                  4    |                  0
+           5    |                  5    |                  4
+           6    |                  6    |                  0
+           7    |                  7    |                  0
+           8    |                  8    |                  5,            7
+           9    |                  9    |                  1,            3,            8
+          10    |                 10    |                  6
+          11    |                  0    |                  2,            9
+
+Here is the display of the graph :
+
+12 vertices
+16 edges
+0 -> 4 = 0
+0 -> 6 = 0
+0 -> 7 = 0
+1 -> 9 = 1
+2 -> 11 = 2
+3 -> 9 = 3
+4 -> 1 = 4
+4 -> 5 = 4
+5 -> 8 = 5
+6 -> 3 = 6
+6 -> 10 = 6
+7 -> 2 = 7
+7 -> 8 = 7
+8 -> 9 = 8
+9 -> 11 = 9
+10 -> 1 = 10
+
+
+Here is the corresponding matrix :
+
+    0  1  2  3  4  5  6  7  8  9 10 11
+ 0  *  *  *  *  0  *  0  0  *  *  *  *
+ 1  *  *  *  *  *  *  *  *  *  1  *  *
+ 2  *  *  *  *  *  *  *  *  *  *  *  2
+ 3  *  *  *  *  *  *  *  *  *  3  *  *
+ 4  *  4  *  *  *  4  *  *  *  *  *  *
+ 5  *  *  *  *  *  *  *  *  5  *  *  *
+ 6  *  *  *  6  *  *  *  *  *  *  6  *
+ 7  *  *  7  *  *  *  *  *  7  *  *  *
+ 8  *  *  *  *  *  *  *  *  *  8  *  *
+ 9  *  *  *  *  *  *  *  *  *  *  *  9
+10  * 10  *  *  *  *  *  *  *  *  *  *
+11  *  *  *  *  *  *  *  *  *  *  *  *
+
+Starting cycle detection from node 0
+Checking node 0
+Node 0 added to visited and stack sets.
+Checking node 4
+Node 4 added to visited and stack sets.
+Checking node 1
+Node 1 added to visited and stack sets.
+Checking node 9
+Node 9 added to visited and stack sets.
+Checking node 11
+Node 11 added to visited and stack sets.
+Node 11 removed from stack set.
+Node 9 removed from stack set.
+Node 1 removed from stack set.
+Checking node 5
+Node 5 added to visited and stack sets.
+Checking node 8
+Node 8 added to visited and stack sets.
+Checking node 9
+Node 9 has already been visited.
+Node 8 removed from stack set.
+Node 5 removed from stack set.
+Node 4 removed from stack set.
+Checking node 6
+Node 6 added to visited and stack sets.
+Checking node 3
+Node 3 added to visited and stack sets.
+Checking node 9
+Node 9 has already been visited.
+Node 3 removed from stack set.
+Checking node 10
+Node 10 added to visited and stack sets.
+Checking node 1
+Node 1 has already been visited.
+Node 10 removed from stack set.
+Node 6 removed from stack set.
+Checking node 7
+Node 7 added to visited and stack sets.
+Checking node 2
+Node 2 added to visited and stack sets.
+Checking node 11
+Node 11 has already been visited.
+Node 2 removed from stack set.
+Checking node 8
+Node 8 has already been visited.
+Node 7 removed from stack set.
+Node 0 removed from stack set.
+
+Starting cycle detection from node 1
+Checking node 1
+Node 1 has already been visited.
+
+Starting cycle detection from node 2
+Checking node 2
+Node 2 has already been visited.
+
+Starting cycle detection from node 3
+Checking node 3
+Node 3 has already been visited.
+
+Starting cycle detection from node 4
+Checking node 4
+Node 4 has already been visited.
+
+Starting cycle detection from node 5
+Checking node 5
+Node 5 has already been visited.
+
+Starting cycle detection from node 6
+Checking node 6
+Node 6 has already been visited.
+
+Starting cycle detection from node 7
+Checking node 7
+Node 7 has already been visited.
+
+Starting cycle detection from node 8
+Checking node 8
+Node 8 has already been visited.
+
+Starting cycle detection from node 9
+Checking node 9
+Node 9 has already been visited.
+
+Starting cycle detection from node 10
+Checking node 10
+Node 10 has already been visited.
+
+Starting cycle detection from node 11
+Checking node 11
+Node 11 has already been visited.
+
+The graph is a valid scheduling graph.
+
+Calendars:
+Task 0: Start Time = 0, End Time = 0
+Task 7: Start Time = 0, End Time = 7
+Task 2: Start Time = 7, End Time = 9
+Task 6: Start Time = 0, End Time = 6
+Task 10: Start Time = 6, End Time = 16
+Task 3: Start Time = 6, End Time = 9
+Task 4: Start Time = 0, End Time = 4
+Task 5: Start Time = 4, End Time = 9
+Task 8: Start Time = 9, End Time = 17
+Task 1: Start Time = 16, End Time = 17
+Task 9: Start Time = 17, End Time = 26
+Task 11: Start Time = 26, End Time = 26
+
+Ranks:
+Task 0: Rank 0
+Task 4: Rank 1
+Task 6: Rank 1
+Task 7: Rank 1
+Task 2: Rank 2
+Task 3: Rank 2
+Task 5: Rank 2
+Task 10: Rank 2
+Task 1: Rank 3
+Task 8: Rank 3
+Task 9: Rank 4
+Task 11: Rank 5
+
+Earliest date:
+Task 0: Earliest date = 0
+Task 7: Earliest date = 0
+Task 6: Earliest date = 0
+Task 4: Earliest date = 0
+Task 5: Earliest date = 4
+Task 10: Earliest date = 6
+Task 3: Earliest date = 6
+Task 2: Earliest date = 7
+Task 8: Earliest date = 9
+Task 1: Earliest date = 16
+Task 9: Earliest date = 17
+Task 11: Earliest date = 26
+
+Latest date:
+Task 0: Latest date = 0
+Task 6: Latest date = 0
+Task 4: Latest date = 0
+Task 7: Latest date = 2
+Task 5: Latest date = 4
+Task 10: Latest date = 6
+Task 8: Latest date = 9
+Task 3: Latest date = 14
+Task 1: Latest date = 16
+Task 9: Latest date = 17
+Task 2: Latest date = 24
+Task 11: Latest date = 26
+
+Total Float:
+Task 0: Total Float = 0
+Task 1: Total Float = 0
+Task 4: Total Float = 0
+Task 5: Total Float = 0
+Task 6: Total Float = 0
+Task 8: Total Float = 0
+Task 9: Total Float = 0
+Task 10: Total Float = 0
+Task 11: Total Float = 0
+Task 7: Total Float = 2
+Task 3: Total Float = 8
+Task 2: Total Float = 17
+
+Critical Paths:
+Path 1: Task 0 -> Task 4 -> Task 1 -> Task 9 -> Task 11
+Path 2: Task 0 -> Task 4 -> Task 5 -> Task 8 -> Task 9 -> Task 11
+Path 3: Task 0 -> Task 6 -> Task 10 -> Task 1 -> Task 9 -> Task 11
+
+
+
+||| Welcome to Graph Theory 3000 |||
+
+Which table do you want to try ?
+8
+Here is the table :
+
+    Vertices    |           Duration    |       Predecessors    |
+           0    |                  0    |
+           1    |                  1    |                  4,            5,           10
+           2    |                  2    |                  7
+           3    |                  3    |                  6,           10
+           4    |                  4    |                  0
+           5    |                  5    |                  0
+           6    |                  6    |                  0
+           7    |                  7    |                  0
+           8    |                  9    |                  5,            7
+           9    |                  9    |                  1,            2,            3,            8
+          10    |                 10    |                  0
+          11    |                  0    |                  9
+
+Here is the display of the graph :
+
+12 vertices
+18 edges
+0 -> 4 = 0
+0 -> 5 = 0
+0 -> 6 = 0
+0 -> 7 = 0
+0 -> 10 = 0
+1 -> 9 = 1
+2 -> 9 = 2
+3 -> 9 = 3
+4 -> 1 = 4
+5 -> 1 = 5
+5 -> 8 = 5
+6 -> 3 = 6
+7 -> 2 = 7
+7 -> 8 = 7
+8 -> 9 = 9
+9 -> 11 = 9
+10 -> 1 = 10
+10 -> 3 = 10
+
+
+Here is the corresponding matrix :
+
+    0  1  2  3  4  5  6  7  8  9 10 11
+ 0  *  *  *  *  0  0  0  0  *  *  0  *
+ 1  *  *  *  *  *  *  *  *  *  1  *  *
+ 2  *  *  *  *  *  *  *  *  *  2  *  *
+ 3  *  *  *  *  *  *  *  *  *  3  *  *
+ 4  *  4  *  *  *  *  *  *  *  *  *  *
+ 5  *  5  *  *  *  *  *  *  5  *  *  *
+ 6  *  *  *  6  *  *  *  *  *  *  *  *
+ 7  *  *  7  *  *  *  *  *  7  *  *  *
+ 8  *  *  *  *  *  *  *  *  *  9  *  *
+ 9  *  *  *  *  *  *  *  *  *  *  *  9
+10  * 10  * 10  *  *  *  *  *  *  *  *
+11  *  *  *  *  *  *  *  *  *  *  *  *
+
+Starting cycle detection from node 0
+Checking node 0
+Node 0 added to visited and stack sets.
+Checking node 4
+Node 4 added to visited and stack sets.
+Checking node 1
+Node 1 added to visited and stack sets.
+Checking node 9
+Node 9 added to visited and stack sets.
+Checking node 11
+Node 11 added to visited and stack sets.
+Node 11 removed from stack set.
+Node 9 removed from stack set.
+Node 1 removed from stack set.
+Node 4 removed from stack set.
+Checking node 5
+Node 5 added to visited and stack sets.
+Checking node 1
+Node 1 has already been visited.
+Checking node 8
+Node 8 added to visited and stack sets.
+Checking node 9
+Node 9 has already been visited.
+Node 8 removed from stack set.
+Node 5 removed from stack set.
+Checking node 6
+Node 6 added to visited and stack sets.
+Checking node 3
+Node 3 added to visited and stack sets.
+Checking node 9
+Node 9 has already been visited.
+Node 3 removed from stack set.
+Node 6 removed from stack set.
+Checking node 7
+Node 7 added to visited and stack sets.
+Checking node 2
+Node 2 added to visited and stack sets.
+Checking node 9
+Node 9 has already been visited.
+Node 2 removed from stack set.
+Checking node 8
+Node 8 has already been visited.
+Node 7 removed from stack set.
+Checking node 10
+Node 10 added to visited and stack sets.
+Checking node 1
+Node 1 has already been visited.
+Checking node 3
+Node 3 has already been visited.
+Node 10 removed from stack set.
+Node 0 removed from stack set.
+
+Starting cycle detection from node 1
+Checking node 1
+Node 1 has already been visited.
+
+Starting cycle detection from node 2
+Checking node 2
+Node 2 has already been visited.
+
+Starting cycle detection from node 3
+Checking node 3
+Node 3 has already been visited.
+
+Starting cycle detection from node 4
+Checking node 4
+Node 4 has already been visited.
+
+Starting cycle detection from node 5
+Checking node 5
+Node 5 has already been visited.
+
+Starting cycle detection from node 6
+Checking node 6
+Node 6 has already been visited.
+
+Starting cycle detection from node 7
+Checking node 7
+Node 7 has already been visited.
+
+Starting cycle detection from node 8
+Checking node 8
+Node 8 has already been visited.
+
+Starting cycle detection from node 9
+Checking node 9
+Node 9 has already been visited.
+
+Starting cycle detection from node 10
+Checking node 10
+Node 10 has already been visited.
+
+Starting cycle detection from node 11
+Checking node 11
+Node 11 has already been visited.
+
+The graph is a valid scheduling graph.
+
+Calendars:
+Task 0: Start Time = 0, End Time = 0
+Task 10: Start Time = 0, End Time = 10
+Task 7: Start Time = 0, End Time = 7
+Task 2: Start Time = 7, End Time = 9
+Task 6: Start Time = 0, End Time = 6
+Task 3: Start Time = 10, End Time = 13
+Task 5: Start Time = 0, End Time = 5
+Task 8: Start Time = 7, End Time = 16
+Task 4: Start Time = 0, End Time = 4
+Task 1: Start Time = 10, End Time = 11
+Task 9: Start Time = 16, End Time = 25
+Task 11: Start Time = 25, End Time = 25
+
+Ranks:
+Task 0: Rank 0
+Task 4: Rank 1
+Task 5: Rank 1
+Task 6: Rank 1
+Task 7: Rank 1
+Task 10: Rank 1
+Task 1: Rank 2
+Task 2: Rank 2
+Task 3: Rank 2
+Task 8: Rank 2
+Task 9: Rank 3
+Task 11: Rank 4
+
+Earliest date:
+Task 0: Earliest date = 0
+Task 10: Earliest date = 0
+Task 7: Earliest date = 0
+Task 6: Earliest date = 0
+Task 5: Earliest date = 0
+Task 4: Earliest date = 0
+Task 2: Earliest date = 7
+Task 8: Earliest date = 7
+Task 3: Earliest date = 10
+Task 1: Earliest date = 10
+Task 9: Earliest date = 16
+Task 11: Earliest date = 25
+
+Latest date:
+Task 0: Latest date = 0
+Task 7: Latest date = 0
+Task 5: Latest date = 2
+Task 10: Latest date = 3
+Task 6: Latest date = 7
+Task 8: Latest date = 7
+Task 4: Latest date = 11
+Task 3: Latest date = 13
+Task 2: Latest date = 14
+Task 1: Latest date = 15
+Task 9: Latest date = 16
+Task 11: Latest date = 25
+
+Total Float:
+Task 0: Total Float = 0
+Task 7: Total Float = 0
+Task 8: Total Float = 0
+Task 9: Total Float = 0
+Task 11: Total Float = 0
+Task 5: Total Float = 2
+Task 3: Total Float = 3
+Task 10: Total Float = 3
+Task 1: Total Float = 5
+Task 2: Total Float = 7
+Task 6: Total Float = 7
+Task 4: Total Float = 11
+
+Critical Paths:
+Path 1: Task 0 -> Task 7 -> Task 8 -> Task 9 -> Task 11
+
+
+
+||| Welcome to Graph Theory 3000 |||
+
+Which table do you want to try ?
+9
+Here is the table :
+
+    Vertices    |           Duration    |       Predecessors    |
+           0    |                  0    |
+           1    |                  1    |                  4,            5,            8,           10
+           2    |                  2    |                  7
+           3    |                  3    |                  6,           10
+           4    |                  4    |                  0
+           5    |                  5    |                  4
+           6    |                  6    |                  0
+           7    |                  7    |                  0
+           8    |                  8    |                  5,            7
+           9    |                  9    |                  1,            2,            3,            8
+          10    |                 10    |                  0
+          11    |                  0    |                  9
+
+Here is the display of the graph :
+
+12 vertices
+19 edges
+0 -> 4 = 0
+0 -> 6 = 0
+0 -> 7 = 0
+0 -> 10 = 0
+1 -> 9 = 1
+2 -> 9 = 2
+3 -> 9 = 3
+4 -> 1 = 4
+4 -> 5 = 4
+5 -> 1 = 5
+5 -> 8 = 5
+6 -> 3 = 6
+7 -> 2 = 7
+7 -> 8 = 7
+8 -> 1 = 8
+8 -> 9 = 8
+9 -> 11 = 9
+10 -> 1 = 10
+10 -> 3 = 10
+
+
+Here is the corresponding matrix :
+
+    0  1  2  3  4  5  6  7  8  9 10 11
+ 0  *  *  *  *  0  *  0  0  *  *  0  *
+ 1  *  *  *  *  *  *  *  *  *  1  *  *
+ 2  *  *  *  *  *  *  *  *  *  2  *  *
+ 3  *  *  *  *  *  *  *  *  *  3  *  *
+ 4  *  4  *  *  *  4  *  *  *  *  *  *
+ 5  *  5  *  *  *  *  *  *  5  *  *  *
+ 6  *  *  *  6  *  *  *  *  *  *  *  *
+ 7  *  *  7  *  *  *  *  *  7  *  *  *
+ 8  *  8  *  *  *  *  *  *  *  8  *  *
+ 9  *  *  *  *  *  *  *  *  *  *  *  9
+10  * 10  * 10  *  *  *  *  *  *  *  *
+11  *  *  *  *  *  *  *  *  *  *  *  *
+
+Starting cycle detection from node 0
+Checking node 0
+Node 0 added to visited and stack sets.
+Checking node 4
+Node 4 added to visited and stack sets.
+Checking node 1
+Node 1 added to visited and stack sets.
+Checking node 9
+Node 9 added to visited and stack sets.
+Checking node 11
+Node 11 added to visited and stack sets.
+Node 11 removed from stack set.
+Node 9 removed from stack set.
+Node 1 removed from stack set.
+Checking node 5
+Node 5 added to visited and stack sets.
+Checking node 1
+Node 1 has already been visited.
+Checking node 8
+Node 8 added to visited and stack sets.
+Checking node 1
+Node 1 has already been visited.
+Checking node 9
+Node 9 has already been visited.
+Node 8 removed from stack set.
+Node 5 removed from stack set.
+Node 4 removed from stack set.
+Checking node 6
+Node 6 added to visited and stack sets.
+Checking node 3
+Node 3 added to visited and stack sets.
+Checking node 9
+Node 9 has already been visited.
+Node 3 removed from stack set.
+Node 6 removed from stack set.
+Checking node 7
+Node 7 added to visited and stack sets.
+Checking node 2
+Node 2 added to visited and stack sets.
+Checking node 9
+Node 9 has already been visited.
+Node 2 removed from stack set.
+Checking node 8
+Node 8 has already been visited.
+Node 7 removed from stack set.
+Checking node 10
+Node 10 added to visited and stack sets.
+Checking node 1
+Node 1 has already been visited.
+Checking node 3
+Node 3 has already been visited.
+Node 10 removed from stack set.
+Node 0 removed from stack set.
+
+Starting cycle detection from node 1
+Checking node 1
+Node 1 has already been visited.
+
+Starting cycle detection from node 2
+Checking node 2
+Node 2 has already been visited.
+
+Starting cycle detection from node 3
+Checking node 3
+Node 3 has already been visited.
+
+Starting cycle detection from node 4
+Checking node 4
+Node 4 has already been visited.
+
+Starting cycle detection from node 5
+Checking node 5
+Node 5 has already been visited.
+
+Starting cycle detection from node 6
+Checking node 6
+Node 6 has already been visited.
+
+Starting cycle detection from node 7
+Checking node 7
+Node 7 has already been visited.
+
+Starting cycle detection from node 8
+Checking node 8
+Node 8 has already been visited.
+
+Starting cycle detection from node 9
+Checking node 9
+Node 9 has already been visited.
+
+Starting cycle detection from node 10
+Checking node 10
+Node 10 has already been visited.
+
+Starting cycle detection from node 11
+Checking node 11
+Node 11 has already been visited.
+
+The graph is a valid scheduling graph.
+
+Calendars:
+Task 0: Start Time = 0, End Time = 0
+Task 10: Start Time = 0, End Time = 10
+Task 7: Start Time = 0, End Time = 7
+Task 2: Start Time = 7, End Time = 9
+Task 6: Start Time = 0, End Time = 6
+Task 3: Start Time = 10, End Time = 13
+Task 4: Start Time = 0, End Time = 4
+Task 5: Start Time = 4, End Time = 9
+Task 8: Start Time = 9, End Time = 17
+Task 1: Start Time = 17, End Time = 18
+Task 9: Start Time = 18, End Time = 27
+Task 11: Start Time = 27, End Time = 27
+
+Ranks:
+Task 0: Rank 0
+Task 4: Rank 1
+Task 6: Rank 1
+Task 7: Rank 1
+Task 10: Rank 1
+Task 2: Rank 2
+Task 3: Rank 2
+Task 5: Rank 2
+Task 8: Rank 3
+Task 1: Rank 4
+Task 9: Rank 5
+Task 11: Rank 6
+
+Earliest date:
+Task 0: Earliest date = 0
+Task 10: Earliest date = 0
+Task 7: Earliest date = 0
+Task 6: Earliest date = 0
+Task 4: Earliest date = 0
+Task 5: Earliest date = 4
+Task 2: Earliest date = 7
+Task 8: Earliest date = 9
+Task 3: Earliest date = 10
+Task 1: Earliest date = 17
+Task 9: Earliest date = 18
+Task 11: Earliest date = 27
+
+Latest date:
+Task 0: Latest date = 0
+Task 4: Latest date = 0
+Task 7: Latest date = 2
+Task 5: Latest date = 4
+Task 10: Latest date = 5
+Task 6: Latest date = 9
+Task 8: Latest date = 9
+Task 3: Latest date = 15
+Task 2: Latest date = 16
+Task 1: Latest date = 17
+Task 9: Latest date = 18
+Task 11: Latest date = 27
+
+Total Float:
+Task 0: Total Float = 0
+Task 1: Total Float = 0
+Task 4: Total Float = 0
+Task 5: Total Float = 0
+Task 8: Total Float = 0
+Task 9: Total Float = 0
+Task 11: Total Float = 0
+Task 7: Total Float = 2
+Task 3: Total Float = 5
+Task 10: Total Float = 5
+Task 2: Total Float = 9
+Task 6: Total Float = 9
+
+Critical Paths:
+Path 1: Task 0 -> Task 4 -> Task 1 -> Task 9 -> Task 11
+Path 2: Task 0 -> Task 4 -> Task 5 -> Task 1 -> Task 9 -> Task 11
+Path 3: Task 0 -> Task 4 -> Task 5 -> Task 8 -> Task 1 -> Task 9 -> Task 11
+Path 4: Task 0 -> Task 4 -> Task 5 -> Task 8 -> Task 9 -> Task 11
+
+||| Welcome to Graph Theory 3000 |||
+
+Which table do you want to try ?
+10
+Here is the table :
+
+    Vertices    |           Duration    |       Predecessors    |
+           0    |                  0    |
+           1    |                  2    |                  0
+           2    |                  3    |                  1
+           3    |                  5    |                  2
+           4    |                  6    |                  1,            2
+           5    |                  2    |                  1,            4
+           6    |                  1    |                  4,            5
+           7    |                  6    |                  3,            5
+           8    |                  1    |                  2,            4,            7
+           9    |                  0    |                  6,            8
+
+Here is the display of the graph :
+
+10 vertices
+16 edges
+0 -> 1 = 0
+1 -> 2 = 2
+1 -> 4 = 2
+1 -> 5 = 2
+2 -> 3 = 3
+2 -> 4 = 3
+2 -> 8 = 3
+3 -> 7 = 5
+4 -> 5 = 6
+4 -> 6 = 6
+4 -> 8 = 6
+5 -> 6 = 2
+5 -> 7 = 2
+6 -> 9 = 1
+7 -> 8 = 6
+8 -> 9 = 1
+
+
+Here is the corresponding matrix :
+
+  0 1 2 3 4 5 6 7 8 9
+0 * 0 * * * * * * * *
+1 * * 2 * 2 2 * * * *
+2 * * * 3 3 * * * 3 *
+3 * * * * * * * 5 * *
+4 * * * * * 6 6 * 6 *
+5 * * * * * * 2 2 * *
+6 * * * * * * * * * 1
+7 * * * * * * * * 6 *
+8 * * * * * * * * * 1
+9 * * * * * * * * * *
+
+Starting cycle detection from node 0
+Checking node 0
+Node 0 added to visited and stack sets.
+Checking node 1
+Node 1 added to visited and stack sets.
+Checking node 2
+Node 2 added to visited and stack sets.
+Checking node 3
+Node 3 added to visited and stack sets.
+Checking node 7
+Node 7 added to visited and stack sets.
+Checking node 8
+Node 8 added to visited and stack sets.
+Checking node 9
+Node 9 added to visited and stack sets.
+Node 9 removed from stack set.
+Node 8 removed from stack set.
+Node 7 removed from stack set.
+Node 3 removed from stack set.
+Checking node 4
+Node 4 added to visited and stack sets.
+Checking node 5
+Node 5 added to visited and stack sets.
+Checking node 6
+Node 6 added to visited and stack sets.
+Checking node 9
+Node 9 has already been visited.
+Node 6 removed from stack set.
+Checking node 7
+Node 7 has already been visited.
+Node 5 removed from stack set.
+Checking node 6
+Node 6 has already been visited.
+Checking node 8
+Node 8 has already been visited.
+Node 4 removed from stack set.
+Checking node 8
+Node 8 has already been visited.
+Node 2 removed from stack set.
+Checking node 4
+Node 4 has already been visited.
+Checking node 5
+Node 5 has already been visited.
+Node 1 removed from stack set.
+Node 0 removed from stack set.
+
+Starting cycle detection from node 1
+Checking node 1
+Node 1 has already been visited.
+
+Starting cycle detection from node 2
+Checking node 2
+Node 2 has already been visited.
+
+Starting cycle detection from node 3
+Checking node 3
+Node 3 has already been visited.
+
+Starting cycle detection from node 4
+Checking node 4
+Node 4 has already been visited.
+
+Starting cycle detection from node 5
+Checking node 5
+Node 5 has already been visited.
+
+Starting cycle detection from node 6
+Checking node 6
+Node 6 has already been visited.
+
+Starting cycle detection from node 7
+Checking node 7
+Node 7 has already been visited.
+
+Starting cycle detection from node 8
+Checking node 8
+Node 8 has already been visited.
+
+Starting cycle detection from node 9
+Checking node 9
+Node 9 has already been visited.
+
+The graph is a valid scheduling graph.
+
+Calendars:
+Task 0: Start Time = 0, End Time = 0
+Task 1: Start Time = 0, End Time = 2
+Task 2: Start Time = 2, End Time = 5
+Task 4: Start Time = 5, End Time = 11
+Task 5: Start Time = 11, End Time = 13
+Task 6: Start Time = 13, End Time = 14
+Task 3: Start Time = 5, End Time = 10
+Task 7: Start Time = 13, End Time = 19
+Task 8: Start Time = 19, End Time = 20
+Task 9: Start Time = 20, End Time = 20
+
+Ranks:
+Task 0: Rank 0
+Task 1: Rank 1
+Task 2: Rank 2
+Task 3: Rank 3
+Task 4: Rank 3
+Task 5: Rank 4
+Task 6: Rank 5
+Task 7: Rank 5
+Task 8: Rank 6
+Task 9: Rank 7
+
+Earliest date:
+Task 0: Earliest date = 0
+Task 1: Earliest date = 0
+Task 2: Earliest date = 2
+Task 4: Earliest date = 5
+Task 3: Earliest date = 5
+Task 5: Earliest date = 11
+Task 6: Earliest date = 13
+Task 7: Earliest date = 13
+Task 8: Earliest date = 19
+Task 9: Earliest date = 20
+
+Latest date:
+Task 0: Latest date = 0
+Task 1: Latest date = 0
+Task 2: Latest date = 2
+Task 4: Latest date = 5
+Task 3: Latest date = 8
+Task 5: Latest date = 11
+Task 7: Latest date = 13
+Task 6: Latest date = 19
+Task 8: Latest date = 19
+Task 9: Latest date = 20
+
+Total Float:
+Task 0: Total Float = 0
+Task 1: Total Float = 0
+Task 2: Total Float = 0
+Task 4: Total Float = 0
+Task 5: Total Float = 0
+Task 7: Total Float = 0
+Task 8: Total Float = 0
+Task 9: Total Float = 0
+Task 3: Total Float = 3
+Task 6: Total Float = 6
+
+Critical Paths:
+Path 1: Task 0 -> Task 1 -> Task 2 -> Task 4 -> Task 5 -> Task 7 -> Task 8 -> Task 9
+Path 2: Task 0 -> Task 1 -> Task 2 -> Task 4 -> Task 8 -> Task 9
+Path 3: Task 0 -> Task 1 -> Task 2 -> Task 8 -> Task 9
+Path 4: Task 0 -> Task 1 -> Task 4 -> Task 5 -> Task 7 -> Task 8 -> Task 9
+Path 5: Task 0 -> Task 1 -> Task 4 -> Task 8 -> Task 9
+Path 6: Task 0 -> Task 1 -> Task 5 -> Task 7 -> Task 8 -> Task 9
+
+
+
+||| Welcome to Graph Theory 3000 |||
+
+Which table do you want to try ?
+11
+Here is the table :
+
+    Vertices    |           Duration    |       Predecessors    |
+           0    |                  0    |
+           1    |                  1    |                  0
+           2    |                  1    |                  1,            4
+           3    |                  4    |                  2
+           4    |                  2    |                  1,            5
+           5    |                  5    |                  1
+           6    |                  6    |                  4,            5
+           7    |                  3    |                  3,            5
+           8    |                  0    |                  2,            4,            6,            7
+           9    |                  0    |                  8
+
+Here is the display of the graph :
+
+10 vertices
+16 edges
+0 -> 1 = 0
+1 -> 2 = 1
+1 -> 4 = 1
+1 -> 5 = 1
+2 -> 3 = 1
+2 -> 8 = 1
+3 -> 7 = 4
+4 -> 2 = 2
+4 -> 6 = 2
+4 -> 8 = 2
+5 -> 4 = 5
+5 -> 6 = 5
+5 -> 7 = 5
+6 -> 8 = 6
+7 -> 8 = 3
+8 -> 9 = 0
+
+
+Here is the corresponding matrix :
+
+  0 1 2 3 4 5 6 7 8 9
+0 * 0 * * * * * * * *
+1 * * 1 * 1 1 * * * *
+2 * * * 1 * * * * 1 *
+3 * * * * * * * 4 * *
+4 * * 2 * * * 2 * 2 *
+5 * * * * 5 * 5 5 * *
+6 * * * * * * * * 6 *
+7 * * * * * * * * 3 *
+8 * * * * * * * * * 0
+9 * * * * * * * * * *
+
+Starting cycle detection from node 0
+Checking node 0
+Node 0 added to visited and stack sets.
+Checking node 1
+Node 1 added to visited and stack sets.
+Checking node 2
+Node 2 added to visited and stack sets.
+Checking node 3
+Node 3 added to visited and stack sets.
+Checking node 7
+Node 7 added to visited and stack sets.
+Checking node 8
+Node 8 added to visited and stack sets.
+Checking node 9
+Node 9 added to visited and stack sets.
+Node 9 removed from stack set.
+Node 8 removed from stack set.
+Node 7 removed from stack set.
+Node 3 removed from stack set.
+Checking node 8
+Node 8 has already been visited.
+Node 2 removed from stack set.
+Checking node 4
+Node 4 added to visited and stack sets.
+Checking node 2
+Node 2 has already been visited.
+Checking node 6
+Node 6 added to visited and stack sets.
+Checking node 8
+Node 8 has already been visited.
+Node 6 removed from stack set.
+Checking node 8
+Node 8 has already been visited.
+Node 4 removed from stack set.
+Checking node 5
+Node 5 added to visited and stack sets.
+Checking node 4
+Node 4 has already been visited.
+Checking node 6
+Node 6 has already been visited.
+Checking node 7
+Node 7 has already been visited.
+Node 5 removed from stack set.
+Node 1 removed from stack set.
+Node 0 removed from stack set.
+
+Starting cycle detection from node 1
+Checking node 1
+Node 1 has already been visited.
+
+Starting cycle detection from node 2
+Checking node 2
+Node 2 has already been visited.
+
+Starting cycle detection from node 3
+Checking node 3
+Node 3 has already been visited.
+
+Starting cycle detection from node 4
+Checking node 4
+Node 4 has already been visited.
+
+Starting cycle detection from node 5
+Checking node 5
+Node 5 has already been visited.
+
+Starting cycle detection from node 6
+Checking node 6
+Node 6 has already been visited.
+
+Starting cycle detection from node 7
+Checking node 7
+Node 7 has already been visited.
+
+Starting cycle detection from node 8
+Checking node 8
+Node 8 has already been visited.
+
+Starting cycle detection from node 9
+Checking node 9
+Node 9 has already been visited.
+
+The graph is a valid scheduling graph.
+
+Calendars:
+Task 0: Start Time = 0, End Time = 0
+Task 1: Start Time = 0, End Time = 1
+Task 5: Start Time = 1, End Time = 6
+Task 4: Start Time = 6, End Time = 8
+Task 6: Start Time = 8, End Time = 14
+Task 2: Start Time = 8, End Time = 9
+Task 3: Start Time = 9, End Time = 13
+Task 7: Start Time = 13, End Time = 16
+Task 8: Start Time = 16, End Time = 16
+Task 9: Start Time = 16, End Time = 16
+
+Ranks:
+Task 0: Rank 0
+Task 1: Rank 1
+Task 5: Rank 2
+Task 4: Rank 3
+Task 2: Rank 4
+Task 6: Rank 4
+Task 3: Rank 5
+Task 7: Rank 6
+Task 8: Rank 7
+Task 9: Rank 8
+
+Earliest date:
+Task 0: Earliest date = 0
+Task 1: Earliest date = 0
+Task 5: Earliest date = 1
+Task 4: Earliest date = 6
+Task 6: Earliest date = 8
+Task 2: Earliest date = 8
+Task 3: Earliest date = 9
+Task 7: Earliest date = 13
+Task 8: Earliest date = 16
+Task 9: Earliest date = 16
+
+Latest date:
+Task 0: Latest date = 0
+Task 1: Latest date = 0
+Task 5: Latest date = 1
+Task 4: Latest date = 6
+Task 2: Latest date = 8
+Task 3: Latest date = 9
+Task 6: Latest date = 10
+Task 7: Latest date = 13
+Task 8: Latest date = 16
+Task 9: Latest date = 16
+
+Total Float:
+Task 0: Total Float = 0
+Task 1: Total Float = 0
+Task 2: Total Float = 0
+Task 3: Total Float = 0
+Task 4: Total Float = 0
+Task 5: Total Float = 0
+Task 7: Total Float = 0
+Task 8: Total Float = 0
+Task 9: Total Float = 0
+Task 6: Total Float = 2
+
+Critical Paths:
+Path 1: Task 0 -> Task 1 -> Task 2 -> Task 3 -> Task 7 -> Task 8 -> Task 9
+Path 2: Task 0 -> Task 1 -> Task 2 -> Task 8 -> Task 9
+Path 3: Task 0 -> Task 1 -> Task 4 -> Task 2 -> Task 3 -> Task 7 -> Task 8 -> Task 9
+Path 4: Task 0 -> Task 1 -> Task 4 -> Task 2 -> Task 8 -> Task 9
+Path 5: Task 0 -> Task 1 -> Task 4 -> Task 8 -> Task 9
+Path 6: Task 0 -> Task 1 -> Task 5 -> Task 4 -> Task 2 -> Task 3 -> Task 7 -> Task 8 -> Task 9
+Path 7: Task 0 -> Task 1 -> Task 5 -> Task 4 -> Task 2 -> Task 8 -> Task 9
+Path 8: Task 0 -> Task 1 -> Task 5 -> Task 4 -> Task 8 -> Task 9
+Path 9: Task 0 -> Task 1 -> Task 5 -> Task 7 -> Task 8 -> Task 9
+
+
+
+||| Welcome to Graph Theory 3000 |||
+
+Which table do you want to try ?
+12
+Here is the table :
+
+    Vertices    |           Duration    |       Predecessors    |
+           0    |                  0    |
+           1    |                 10    |                  0
+           2    |                 10    |                  0
+           3    |                  9    |                  1,            2,           10
+           4    |                  5    |                  1,            2
+           5    |                  4    |                  4
+           6    |                  2    |                  5
+           7    |                  2    |                  4
+           8    |                  4    |                  5,            7,            9
+           9    |                  8    |                  3,            4
+          10    |                 12    |                  9
+          11    |                  2    |                  6,            8,           10
+          12    |                 20    |                  1,            6
+          13    |                  0    |                 11,           12
+
+Here is the display of the graph :
+
+14 vertices
+23 edges
+0 -> 1 = 0
+0 -> 2 = 0
+1 -> 3 = 10
+1 -> 4 = 10
+1 -> 12 = 10
+2 -> 3 = 10
+2 -> 4 = 10
+3 -> 9 = 9
+4 -> 5 = 5
+4 -> 7 = 5
+4 -> 9 = 5
+5 -> 6 = 4
+5 -> 8 = 4
+6 -> 11 = 2
+6 -> 12 = 2
+7 -> 8 = 2
+8 -> 11 = 4
+9 -> 8 = 8
+9 -> 10 = 8
+10 -> 3 = 12
+10 -> 11 = 12
+11 -> 13 = 2
+12 -> 13 = 20
+
+
+Here is the corresponding matrix :
+
+    0  1  2  3  4  5  6  7  8  9 10 11 12 13
+ 0  *  0  0  *  *  *  *  *  *  *  *  *  *  *
+ 1  *  *  * 10 10  *  *  *  *  *  *  * 10  *
+ 2  *  *  * 10 10  *  *  *  *  *  *  *  *  *
+ 3  *  *  *  *  *  *  *  *  *  9  *  *  *  *
+ 4  *  *  *  *  *  5  *  5  *  5  *  *  *  *
+ 5  *  *  *  *  *  *  4  *  4  *  *  *  *  *
+ 6  *  *  *  *  *  *  *  *  *  *  *  2  2  *
+ 7  *  *  *  *  *  *  *  *  2  *  *  *  *  *
+ 8  *  *  *  *  *  *  *  *  *  *  *  4  *  *
+ 9  *  *  *  *  *  *  *  *  8  *  8  *  *  *
+10  *  *  * 12  *  *  *  *  *  *  * 12  *  *
+11  *  *  *  *  *  *  *  *  *  *  *  *  *  2
+12  *  *  *  *  *  *  *  *  *  *  *  *  * 20
+13  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+
+Starting cycle detection from node 0
+Checking node 0
+Node 0 added to visited and stack sets.
+Checking node 1
+Node 1 added to visited and stack sets.
+Checking node 3
+Node 3 added to visited and stack sets.
+Checking node 9
+Node 9 added to visited and stack sets.
+Checking node 8
+Node 8 added to visited and stack sets.
+Checking node 11
+Node 11 added to visited and stack sets.
+Checking node 13
+Node 13 added to visited and stack sets.
+Node 13 removed from stack set.
+Node 11 removed from stack set.
+Node 8 removed from stack set.
+Checking node 10
+Node 10 added to visited and stack sets.
+Checking node 3
+Cycle detected: Node 3 is already in the stack.
+Error: The graph contains a cycle.
+The graph is not a valid scheduling graph.
+
+
+
+||| Welcome to Graph Theory 3000 |||
+
+Which table do you want to try ?
+13
+Here is the table :
+
+    Vertices    |           Duration    |       Predecessors    |
+           0    |                  0    |
+           1    |                  9    |                  0
+           2    |                  2    |                  1,            3
+           3    |                  4    |                  0
+           4    |                  7    |                  3
+           5    |                  0    |                  2,            4
+
+Here is the display of the graph :
+
+6 vertices
+7 edges
+0 -> 1 = 0
+0 -> 3 = 0
+1 -> 2 = 9
+2 -> 5 = 2
+3 -> 2 = 4
+3 -> 4 = 4
+4 -> 5 = 7
+
+
+Here is the corresponding matrix :
+
+  0 1 2 3 4 5
+0 * 0 * 0 * *
+1 * * 9 * * *
+2 * * * * * 2
+3 * * 4 * 4 *
+4 * * * * * 7
+5 * * * * * *
+
+Starting cycle detection from node 0
+Checking node 0
+Node 0 added to visited and stack sets.
+Checking node 1
+Node 1 added to visited and stack sets.
+Checking node 2
+Node 2 added to visited and stack sets.
+Checking node 5
+Node 5 added to visited and stack sets.
+Node 5 removed from stack set.
+Node 2 removed from stack set.
+Node 1 removed from stack set.
+Checking node 3
+Node 3 added to visited and stack sets.
+Checking node 2
+Node 2 has already been visited.
+Checking node 4
+Node 4 added to visited and stack sets.
+Checking node 5
+Node 5 has already been visited.
+Node 4 removed from stack set.
+Node 3 removed from stack set.
+Node 0 removed from stack set.
+
+Starting cycle detection from node 1
+Checking node 1
+Node 1 has already been visited.
+
+Starting cycle detection from node 2
+Checking node 2
+Node 2 has already been visited.
+
+Starting cycle detection from node 3
+Checking node 3
+Node 3 has already been visited.
+
+Starting cycle detection from node 4
+Checking node 4
+Node 4 has already been visited.
+
+Starting cycle detection from node 5
+Checking node 5
+Node 5 has already been visited.
+
+The graph is a valid scheduling graph.
+
+Calendars:
+Task 0: Start Time = 0, End Time = 0
+Task 3: Start Time = 0, End Time = 4
+Task 4: Start Time = 4, End Time = 11
+Task 1: Start Time = 0, End Time = 9
+Task 2: Start Time = 9, End Time = 11
+Task 5: Start Time = 11, End Time = 11
+
+Ranks:
+Task 0: Rank 0
+Task 1: Rank 1
+Task 3: Rank 1
+Task 2: Rank 2
+Task 4: Rank 2
+Task 5: Rank 3
+
+Earliest date:
+Task 0: Earliest date = 0
+Task 3: Earliest date = 0
+Task 1: Earliest date = 0
+Task 4: Earliest date = 4
+Task 2: Earliest date = 9
+Task 5: Earliest date = 11
+
+Latest date:
+Task 0: Latest date = 0
+Task 3: Latest date = 0
+Task 1: Latest date = 0
+Task 4: Latest date = 4
+Task 2: Latest date = 9
+Task 5: Latest date = 11
+
+Total Float:
+Task 0: Total Float = 0
+Task 1: Total Float = 0
+Task 2: Total Float = 0
+Task 3: Total Float = 0
+Task 4: Total Float = 0
+Task 5: Total Float = 0
+
+Critical Paths:
+Path 1: Task 0 -> Task 1 -> Task 2 -> Task 5
+Path 2: Task 0 -> Task 3 -> Task 2 -> Task 5
+Path 3: Task 0 -> Task 3 -> Task 4 -> Task 5
+
+
+
+||| Welcome to Graph Theory 3000 |||
+
+Which table do you want to try ?
+14
+Here is the table :
+
+    Vertices    |           Duration    |       Predecessors    |
+           0    |                  0    |
+           1    |                  3    |                  0
+           2    |                  2    |                  0
+           3    |                  4    |                  1,            2,            4
+           4    |                  1    |                  2
+           5    |                  0    |                  3
+
+Here is the display of the graph :
+
+6 vertices
+7 edges
+0 -> 1 = 0
+0 -> 2 = 0
+1 -> 3 = 3
+2 -> 3 = 2
+2 -> 4 = 2
+3 -> 5 = 4
+4 -> 3 = 1
+
+
+Here is the corresponding matrix :
+
+  0 1 2 3 4 5
+0 * 0 0 * * *
+1 * * * 3 * *
+2 * * * 2 2 *
+3 * * * * * 4
+4 * * * 1 * *
+5 * * * * * *
+
+Starting cycle detection from node 0
+Checking node 0
+Node 0 added to visited and stack sets.
+Checking node 1
+Node 1 added to visited and stack sets.
+Checking node 3
+Node 3 added to visited and stack sets.
+Checking node 5
+Node 5 added to visited and stack sets.
+Node 5 removed from stack set.
+Node 3 removed from stack set.
+Node 1 removed from stack set.
+Checking node 2
+Node 2 added to visited and stack sets.
+Checking node 3
+Node 3 has already been visited.
+Checking node 4
+Node 4 added to visited and stack sets.
+Checking node 3
+Node 3 has already been visited.
+Node 4 removed from stack set.
+Node 2 removed from stack set.
+Node 0 removed from stack set.
+
+Starting cycle detection from node 1
+Checking node 1
+Node 1 has already been visited.
+
+Starting cycle detection from node 2
+Checking node 2
+Node 2 has already been visited.
+
+Starting cycle detection from node 3
+Checking node 3
+Node 3 has already been visited.
+
+Starting cycle detection from node 4
+Checking node 4
+Node 4 has already been visited.
+
+Starting cycle detection from node 5
+Checking node 5
+Node 5 has already been visited.
+
+The graph is a valid scheduling graph.
+
+Calendars:
+Task 0: Start Time = 0, End Time = 0
+Task 2: Start Time = 0, End Time = 2
+Task 4: Start Time = 2, End Time = 3
+Task 1: Start Time = 0, End Time = 3
+Task 3: Start Time = 3, End Time = 7
+Task 5: Start Time = 7, End Time = 7
+
+Ranks:
+Task 0: Rank 0
+Task 1: Rank 1
+Task 2: Rank 1
+Task 4: Rank 2
+Task 3: Rank 3
+Task 5: Rank 4
+
+Earliest date:
+Task 0: Earliest date = 0
+Task 2: Earliest date = 0
+Task 1: Earliest date = 0
+Task 4: Earliest date = 2
+Task 3: Earliest date = 3
+Task 5: Earliest date = 7
+
+Latest date:
+Task 0: Latest date = 0
+Task 2: Latest date = 0
+Task 1: Latest date = 0
+Task 4: Latest date = 2
+Task 3: Latest date = 3
+Task 5: Latest date = 7
+
+Total Float:
+Task 0: Total Float = 0
+Task 1: Total Float = 0
+Task 2: Total Float = 0
+Task 3: Total Float = 0
+Task 4: Total Float = 0
+Task 5: Total Float = 0
+
+Critical Paths:
+Path 1: Task 0 -> Task 1 -> Task 3 -> Task 5
+Path 2: Task 0 -> Task 2 -> Task 3 -> Task 5
+Path 3: Task 0 -> Task 2 -> Task 4 -> Task 3 -> Task 5

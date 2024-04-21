@@ -186,7 +186,6 @@ def display_matrix(matrix):
                 print(str(element).rjust(max_width), end=" ") 
         print()
         
-
 def topological_sort(table_dict):
     # Perform topological sorting using depth-first search (DFS)
     visited = set()

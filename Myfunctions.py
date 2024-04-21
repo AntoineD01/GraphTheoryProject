@@ -76,7 +76,7 @@ def menu():
 
 def display_table(table_dict):
     # Get column names
-    column_names = ["Edge", "Duration", "Predecessors"]
+    column_names = ["Vertices", "Duration", "Predecessors"]
     column_width = max(len(name) for name in column_names)
     
     # Print column names
@@ -246,23 +246,32 @@ def is_valid_scheduling_graph(table_dict):
     stack = set()
 
     def has_cycle(node):
+        print(f"Checking node {node}")
+        
         if node in stack:
+            print(f"Cycle detected: Node {node} is already in the stack.")
             return True
+        
         if node in visited:
+            print(f"Node {node} has already been visited.")
             return False
 
         visited.add(node)
         stack.add(node)
+        print(f"Node {node} added to visited and stack sets.")
 
         for neighbor in table_dict[node]["successors"]:
             if has_cycle(neighbor):
                 return True
 
         stack.remove(node)
+        print(f"Node {node} removed from stack set.")
+        
         return False
 
     # Check for cycles
     for node in table_dict:
+        print(f"Starting cycle detection from node {node}")
         if has_cycle(node):
             print("Error: The graph contains a cycle.")
             return False

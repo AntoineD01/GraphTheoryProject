@@ -41,6 +41,13 @@ def menu():
         print("\nEarliest date:")
         for node, early in sorted_early_date:
             print(f"Task {node}: Earliest date = {early}")
+
+        latest_date = compute_latest_date(table_dict, calendars, critical_path)
+        sorted_latest_date = sorted(latest_date.items(), key=lambda x: x[1])
+        print("\nLatest date:")
+        for node, latest in sorted_latest_date:
+            print(f"Task {node}: Latest date = {latest}")
+
     else:
         print("The graph is not a valid scheduling graph.")
 
@@ -306,20 +313,29 @@ def find_rank(table_dict):
 
     return rank
 
+def compute_latest_date(table_dict, calendars, critical_path):
+    latest_date = {}
+    print(table_dict)
+    # Compute ranks for vertices on the critical path (LF values)
+    for node in calendars:
+        latest_date[node] = calendars[node]["end_time"]
+    # Propagate ranks forward through the graph
+    for node in reversed(topological_sort(table_dict)):
+        successors = table_dict[node]["successors"]
+        if successors:
+            min_successor_date = latest_date[successors[0]] - table_dict[node]["duration"]
+            for i in range (1,len(successors)):
+                successor_date = latest_date[successors[i]] - table_dict[node]["duration"]
+                if successor_date<min_successor_date:
+                    min_successor_date = successor_date
+            latest_date[node] = min_successor_date
+        else:
+            # If the node has no successors, its latest date is the same as the end time of the project
+            latest_date[node] = calendars[max(table_dict)]["end_time"] - table_dict[node]["duration"]
+            
+
+    return latest_date
+
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

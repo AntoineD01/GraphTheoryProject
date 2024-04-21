@@ -1,4 +1,5 @@
 import os
+from collections import deque
 
 def menu():
     print(f'\n\n\n||| Welcome to Graph Theory 3000 |||\n')
@@ -26,12 +27,19 @@ def menu():
             print(f"Task {node}: Start Time = {calendar['start_time']}, End Time = {calendar['end_time']}")
         print("\nCritical Path:", critical_path)
 
+        ranks = find_rank(table_dict)
+        # Sort the ranks dictionary by values (ranks)
+        sorted_ranks = {k: v for k, v in sorted(ranks.items(), key=lambda item: item[1])}
+
+        # Display ranks in ascending order
+        print("Ranks in ascending order:")
+        for edge, rank in sorted_ranks.items():
+            print(f"Edge {edge}: Rank {rank}")
+
         ranks = compute_ranks(table_dict, calendars)
-        print("\nRanks:")
+        print("\nEarliest date:")
         for node, rank in ranks.items():
-            print(f"Task {node}: Rank = {rank}")
-
-
+            print(f"Task {node}: Earliest data = {rank}")
     else:
         print("The graph is not a valid scheduling graph.")
 
@@ -262,6 +270,40 @@ def compute_ranks(table_dict, calendars):
                 ranks[node] = table_dict[node]["duration"]
 
     return ranks
+
+def find_rank(table_dict):
+    # Create a dictionary to store the in-degree of each edge
+    in_degree = {edge: 0 for edge in table_dict}
+
+    # Calculate the in-degree for each edge
+    for edge, data in table_dict.items():
+        for successor in data["successors"]:
+            in_degree[successor] += 1
+
+    # Initialize a queue to perform topological sorting
+    queue = deque()
+
+    # Enqueue edges with in-degree 0
+    for edge, degree in in_degree.items():
+        if degree == 0:
+            queue.append(edge)
+
+    # Initialize a dictionary to store the rank of each edge
+    rank = {edge: 0 for edge in table_dict}
+
+    # Perform topological sorting
+    while queue:
+        current_edge = queue.popleft()
+        for successor in table_dict[current_edge]["successors"]:
+            # Decrease the in-degree of successors
+            in_degree[successor] -= 1
+            # If the in-degree becomes 0, enqueue the successor
+            if in_degree[successor] == 0:
+                queue.append(successor)
+                # Set the rank of the successor
+                rank[successor] = rank[current_edge] + 1
+
+    return rank
 
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')

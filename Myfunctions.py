@@ -1,5 +1,41 @@
 import os
 
+def menu():
+    print(f'\n\n\n||| Welcome to Graph Theory 3000 |||\n')
+    nb_table = input(f'Which table do you want to try ?\n')
+    file_name = "table " + str(nb_table) + ".txt"
+
+    # Creation of the dictionary storing the data
+    table_dict = create_table(file_name)
+    print(f'Here is the table : \n')
+    display_table(table_dict)
+
+    # Creation of the matrix
+    print(f'\n\nHere is the corresponding matrix : \n')
+    Matrix = create_matrix(table_dict)
+    display_matrix(Matrix)
+
+    # Check if it is a valid scheduling graph
+    if is_valid_scheduling_graph(table_dict):
+        print("\nThe graph is a valid scheduling graph.")
+        
+        # Compute calendars
+        calendars, critical_path = compute_calendars(table_dict)
+        print("\nCalendars:")
+        for node, calendar in calendars.items():
+            print(f"Task {node}: Start Time = {calendar['start_time']}, End Time = {calendar['end_time']}")
+        print("\nCritical Path:", critical_path)
+
+        ranks = compute_ranks(table_dict, calendars)
+        print("\nRanks:")
+        for node, rank in ranks.items():
+            print(f"Task {node}: Rank = {rank}")
+
+
+    else:
+        print("The graph is not a valid scheduling graph.")
+
+
 def display_table(table_dict):
     # Get column names
     column_names = ["Edge", "Duration", "Predecessors"]
@@ -81,7 +117,7 @@ def create_matrix(table_dict):
     max_edge = max(table_dict.keys())
 
     # Initialize an empty matrix with zeros
-    edges_matrix = [[0] * (max_edge + 1) for _ in range(max_edge + 1)]
+    edges_matrix = [['*'] * (max_edge + 1) for _ in range(max_edge + 1)]
 
     for edge, data in table_dict.items():
         # Check if the edge has successors
@@ -109,7 +145,7 @@ def display_matrix(matrix):
     for row_num, row in enumerate(matrix):
         print(str(row_num).rjust(max_width), end=" ")  
         for element in row:
-            if element == 0:  
+            if element == '*':  
                 print("*".rjust(max_width), end=" ")  
             else:
                 print(str(element).rjust(max_width), end=" ") 
@@ -226,46 +262,6 @@ def compute_ranks(table_dict, calendars):
                 ranks[node] = table_dict[node]["duration"]
 
     return ranks
-
-
-   
-def menu():
-    print(f'\n\n\n||| Welcome to Graph Theory 3000 |||\n')
-    nb_table = input(f'Which table do you want to try ?\n')
-    file_name = "table " + str(nb_table) + ".txt"
-
-    # Creation of the dictionary storing the data
-    table_dict = create_table(file_name)
-    print(f'Here is the table : \n')
-    display_table(table_dict)
-
-    # Creation of the matrix
-    print(f'\n\nHere is the corresponding matrix : \n')
-    Matrix = create_matrix(table_dict)
-    display_matrix(Matrix)
-
-    # Check if it is a valid scheduling graph
-    if is_valid_scheduling_graph(table_dict):
-        print("The graph is a valid scheduling graph.")
-        
-        # Compute calendars
-        calendars, critical_path = compute_calendars(table_dict)
-        print("Calendars:")
-        for node, calendar in calendars.items():
-            print(f"Task {node}: Start Time = {calendar['start_time']}, End Time = {calendar['end_time']}")
-        print("\nCritical Path:", critical_path)
-
-        ranks = compute_ranks(table_dict, calendars)
-        print("\nRanks:")
-        for node, rank in ranks.items():
-            print(f"Task {node}: Rank = {rank}")
-
-
-    else:
-        print("The graph is not a valid scheduling graph.")
-
-    
-    
 
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')

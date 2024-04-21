@@ -1,9 +1,10 @@
-import os
 from collections import deque
 
 def menu():
     print(f'\n\n\n||| Welcome to Graph Theory 3000 |||\n')
-    nb_table = input(f'Which table do you want to try ?\n')
+    nb_table = 15
+    while (nb_table>14 or nb_table<1):
+        nb_table = int(input(f'Which table do you want to try ?\n'))
     file_name = "table " + str(nb_table) + ".txt"
 
     # Creation of the dictionary storing the data
@@ -47,6 +48,12 @@ def menu():
         print("\nLatest date:")
         for node, latest in sorted_latest_date:
             print(f"Task {node}: Latest date = {latest}")
+
+        total_float = compute_total_float(table_dict, early_date, latest_date)
+        sorted_total_float = sorted(total_float.items(), key=lambda x: x[1])
+        print("\nTotal Float:")
+        for node, float_value in sorted_total_float:
+            print(f"Task {node}: Total Float = {float_value}")
 
     else:
         print("The graph is not a valid scheduling graph.")
@@ -315,7 +322,6 @@ def find_rank(table_dict):
 
 def compute_latest_date(table_dict, calendars, critical_path):
     latest_date = {}
-    print(table_dict)
     # Compute ranks for vertices on the critical path (LF values)
     for node in calendars:
         latest_date[node] = calendars[node]["end_time"]
@@ -331,11 +337,13 @@ def compute_latest_date(table_dict, calendars, critical_path):
             latest_date[node] = min_successor_date
         else:
             # If the node has no successors, its latest date is the same as the end time of the project
-            latest_date[node] = calendars[max(table_dict)]["end_time"] - table_dict[node]["duration"]
-            
-
+            latest_date[node] = calendars[max(table_dict)]["end_time"]
     return latest_date
 
-def clear_terminal():
-    os.system('cls' if os.name == 'nt' else 'clear')
+def compute_total_float(table_dict, earliest_date, latest_date):
+    total_float = {}
 
+    for node in table_dict:
+        total_float[node] = latest_date[node] - earliest_date[node]
+
+    return total_float

@@ -36,10 +36,10 @@ def menu():
         for edge, rank in sorted_ranks.items():
             print(f"Edge {edge}: Rank {rank}")
 
-        ranks = compute_ranks(table_dict, calendars)
+        early_date = compute_early_date(table_dict, calendars)
         print("\nEarliest date:")
-        for node, rank in ranks.items():
-            print(f"Task {node}: Earliest data = {rank}")
+        for node, early in early_date.items():
+            print(f"Task {node}: Earliest date = {early}")
     else:
         print("The graph is not a valid scheduling graph.")
 
@@ -250,26 +250,26 @@ def is_valid_scheduling_graph(table_dict):
     # If no issues found, the graph is valid
     return True
 
-def compute_ranks(table_dict, calendars):
-    ranks = {}
+def compute_early_date(table_dict, calendars):
+    early_date = {}
 
     # Compute ranks for vertices on the critical path (LS values)
     for node in calendars:
-        ranks[node] = calendars[node]["start_time"]
+        early_date[node] = calendars[node]["start_time"]
 
     # Propagate ranks backward through the graph
     for node in reversed(topological_sort(table_dict)):
-        if node not in ranks:
+        if node not in early_date:
             # If the node is not on the critical path, compute its rank
             successors = table_dict[node]["successors"]
             if successors:
-                max_successor_rank = max(ranks[successor] for successor in successors)
-                ranks[node] = max_successor_rank + table_dict[node]["duration"]
+                max_successor_date = max(early_date[successor] for successor in successors)
+                early_date[node] = max_successor_date + table_dict[node]["duration"]
             else:
                 # If the node has no successors, its rank is its own duration
-                ranks[node] = table_dict[node]["duration"]
+                early_date[node] = table_dict[node]["duration"]
 
-    return ranks
+    return early_date
 
 def find_rank(table_dict):
     # Create a dictionary to store the in-degree of each edge

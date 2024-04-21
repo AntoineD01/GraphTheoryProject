@@ -413,6 +413,15 @@ def display_graph(table_dict):
     labels = {node: f"{node}" for node in G.nodes()}
     nx.draw_networkx_labels(G, pos, labels)
 
+    # Annotate edges with durations
+    edge_labels = {}
+    for edge in G.edges():
+        source, target = edge
+        duration = table_dict[source]["duration"]
+        edge_labels[edge] = duration
+
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, label_pos=0.3)
+
     # Show plot
     plt.title("Graph Representation")
     plt.axis('off')

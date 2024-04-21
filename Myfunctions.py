@@ -26,11 +26,10 @@ def menu():
         print("\nThe graph is a valid scheduling graph.")
         
         # Compute calendars
-        calendars, critical_path = compute_calendars(table_dict)
+        calendars = compute_calendars(table_dict)
         print("\nCalendars:")
         for node, calendar in calendars.items():
             print(f"Task {node}: Start Time = {calendar['start_time']}, End Time = {calendar['end_time']}")
-        print("\nCritical Path:", critical_path)
 
         ranks = find_rank(table_dict)
         # Sort the ranks dictionary by values (ranks)
@@ -47,7 +46,7 @@ def menu():
         for node, early in sorted_early_date:
             print(f"Task {node}: Earliest date = {early}")
 
-        latest_date = compute_latest_date(table_dict, calendars, critical_path)
+        latest_date = compute_latest_date(table_dict, calendars)
         sorted_latest_date = sorted(latest_date.items(), key=lambda x: x[1])
         print("\nLatest date:")
         for node, latest in sorted_latest_date:
@@ -232,17 +231,13 @@ def compute_calendars(table_dict):
             lf[node] = min(ls[successor] for successor in successors)
         ls[node] = lf[node] - table_dict[node]["duration"]
 
-    # critical path
-    critical_path = [node for node in order if es[node] == ls[node]]
-
-    
     calendars = {}
     for node in order:
         start_time = es[node]
         end_time = ef[node]
         calendars[node] = {"start_time": start_time, "end_time": end_time}
 
-    return calendars, critical_path
+    return calendars
 
     
 def is_valid_scheduling_graph(table_dict):
@@ -335,7 +330,7 @@ def find_rank(table_dict):
 
     return rank
 
-def compute_latest_date(table_dict, calendars, critical_path):
+def compute_latest_date(table_dict, calendars):
     latest_date = {}
     # Compute ranks for vertices on the critical path (LF values)
     for node in calendars:

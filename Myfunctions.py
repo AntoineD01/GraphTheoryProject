@@ -14,6 +14,7 @@ def menu():
     print(f'Here is the table : \n')
     display_table(table_dict)
 
+    simple_display(table_dict)
     display_graph(table_dict)
 
     # Creation of the matrix
@@ -421,3 +422,14 @@ def display_graph(table_dict):
     plt.title("Graph Representation")
     plt.axis('off')
     plt.show()
+
+def simple_display(table_dict):
+    print("\nHere is the display of the graph : \n")
+    print(f"{len(table_dict)} vertices")
+
+    num_edges = sum(len(data["successors"]) for data in table_dict.values())
+    print(f"{num_edges} edges")
+
+    for vertex, data in table_dict.items():
+        for successor in data["successors"]:
+            print(f"{vertex} -> {successor} = {data['duration']}")

@@ -13,5 +13,6 @@ NetworkX
 Matplotlib
 
 Notes :
-As the path might be an issue, if when entering the value of the graph you want to analyze you have an error, enter the actual path in your computer in line 10.
+To run the code, you'll have to run main.py
+As the path might be an issue on some computers, if when entering the value of the graph you want to analyze you have an error, enter the actual path in your computer in line 10 of Myfunctions.py.
 file_name = "YOUR PATH" + str(nb_table) + ".txt"

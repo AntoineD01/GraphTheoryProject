@@ -1,5 +1,5 @@
 Graph Theory 3000
-Graph Theory 3000 is a Python program designed to analyze and visualize scheduling graphs using graph theory concepts. It provides functionality to create, display, and analyze graphs representing tasks and their dependencies.
+Graph Theory 3000 is a Python program designed to analyze and visualize scheduling graphs using graph theory concepts. It provides functionality to display, and analyze graphs representing tasks and their dependencies.
 
 Features
 Interactive Menu: Easily select and analyze scheduling graphs for various scenarios.

@@ -170,16 +170,13 @@ def create_matrix(table_dict):
 def display_matrix(matrix):
     # Find the maximum width of elements in the matrix
     max_width = max(len(str(element)) for row in matrix for element in row)
-    num_rows = len(matrix)
     num_columns = len(matrix[0])
-
     # Display column numbers
     print(" ".rjust(max_width), end=" ")  
     for col_num in range(num_columns):
         print(str(col_num).rjust(max_width), end=" ")
     print()  
 
-    
     for row_num, row in enumerate(matrix):
         print(str(row_num).rjust(max_width), end=" ")  
         for element in row:
@@ -188,7 +185,7 @@ def display_matrix(matrix):
             else:
                 print(str(element).rjust(max_width), end=" ") 
         print()
-
+        
 
 def topological_sort(table_dict):
     # Perform topological sorting using depth-first search (DFS)
@@ -271,7 +268,7 @@ def is_valid_scheduling_graph(table_dict):
 
     # Check for cycles
     for node in table_dict:
-        print(f"Starting cycle detection from node {node}")
+        print(f"\nStarting cycle detection from node {node}")
         if has_cycle(node):
             print("Error: The graph contains a cycle.")
             return False

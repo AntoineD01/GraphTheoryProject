@@ -32,13 +32,14 @@ def menu():
         sorted_ranks = {k: v for k, v in sorted(ranks.items(), key=lambda item: item[1])}
 
         # Display ranks in ascending order
-        print("Ranks in ascending order:")
+        print("\nRanks:")
         for edge, rank in sorted_ranks.items():
-            print(f"Edge {edge}: Rank {rank}")
+            print(f"Task {edge}: Rank {rank}")
 
         early_date = compute_early_date(table_dict, calendars)
+        sorted_early_date = sorted(early_date.items(), key=lambda x: x[1])
         print("\nEarliest date:")
-        for node, early in early_date.items():
+        for node, early in sorted_early_date:
             print(f"Task {node}: Earliest date = {early}")
     else:
         print("The graph is not a valid scheduling graph.")
